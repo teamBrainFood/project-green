@@ -1,0 +1,15 @@
+#forms{
+	max-width: 400px;
+	float:left;
+	margin-left: 15px;
+	border-right: solid;
+	border-style: solid;
+	border-color: grey;
+	margin-right: 5px;
+}
+.brand-logo{
+	margin-left: 15px;
+}
+#lastName{
+	clear:both;
+}
