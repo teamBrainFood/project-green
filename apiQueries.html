@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<body>
+	
+	<script>
+
+	// api query for foods with a specified nutrient
+	var nutrient = 303;
+	var nutrientURL = "https://api.nal.usda.gov/ndb/nutrients/?api_key=u7cln9dkHVsbUoFLOUKnvEElzjOP58u0CNHWs0SP&max=10&fg=1100&sort=c&nutrients=" + nutrient;
+
+	// run ajax query
+	$.ajax({
+      url: nutrientURL,
+      method: "GET"
+    }).done(function(response) {
+ 
+ 		// assign the data array from the ajax response to a variable
+		var foodResponse = response.report.foods;
+
+		console.log(foodResponse);
+	});
+
+
+	// api query for recipes based on an ingredient
+	var ingredient = "bananas"
+	var ingredientURL = "https://api.edamam.com/search?" + "&q=" + ingredient;
+
+	// run ajax query
+	$.ajax({
+      url: ingredientURL,
+      method: "GET"
+    }).done(function(response) {
+ 
+ 		// assign the data array from the ajax response to a variable
+		var recipeResponse = response.hits;
+
+		console.log(recipeResponse);
+	});
+	</script>
+
+
+</body>
+</html>
