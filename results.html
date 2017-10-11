@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
@@ -22,93 +22,117 @@
       </ul> -->
     </div>
   </nav>
-  <div class="container" id="forms">
+  <div class="container">
     <div class="row">
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s10">
-          <input id="name" type="text" class="validate">
-          <label for="name">Name</label>
+      <div class="col s3">
+        <form id="userForm">
+            <div class="input-field col s12">
+              <input id="userName" type="text" class="validate">
+              <label for="userName">Name</label>
+            </div>
+            <div class="input-field col s12">
+              <input id="age" type="text" class="validate">
+              <label for="age">Age</label>
+            </div>
+            <div class="input-field col s12">
+              <input id="height" type="text" class="validate">
+              <label for="height">Height</label>
+            </div>
+            <div class="input-field col s12">
+              <input id="weight" type="text" class="validate">
+              <label for="weight">Weight</label>
+            </div>
+        </form>
+        <div id="chooseGender">
+          <label><h6>Please choose your gender</h6></label>
+          <br>
+          <br>
+          <form action="maleFemale">
+              <p>
+                <input name="gender" type="radio" id="male" />
+                <label for="male">male</label>
+              </p>
+              <p>
+                <input name="gender" type="radio" id="female" />
+                <label for="female">female</label>
+              </p>
+          </form>
         </div>
-      </div>
-       <div class="row">
-        <div class="input-field col s10">
-          <input id="age" type="text" class="validate">
-          <label for="age">Age</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s10">
-          <input id="height" type="text" class="validate">
-          <label for="height">Height</label>
-        </div>
-      </div>
-        <div class="row">
-        <div class="input-field col s10">
-          <input id="weight" type="text" class="validate">
-          <label for="weight">Weight</label>
-        </div>
-      </div>
-        </div>
-    </form>
-      <div id="chooseGender">
-        <label><h6>Please choose your gender</h6></label>
         <br>
         <br>
-       <form action="maleFemale">
-    <p>
-      <input name="gender" type="radio" id="male" />
-      <label for="male">male</label>
-    </p>
-    <p>
-      <input name="gender" type="radio" id="female" />
-      <label for="female">female</label>
-    </p>
-  </form>
-</div>
-<br>
-<br>
-<div id="nutrientList">
-  <label><h6>Please choose the nutrient</h6></label>
-  <br>
-  <br>
-   <form action="chooseNutrient">
-    <p>
-      <input name="nutrient" type="radio" id="calcium" />
-      <label for="calcium">calcium</label>
-    </p>
-    <p>
-      <input name="nutrient" type="radio" id="magnesium" />
-      <label for="magnesium">magnesium</label>
-    </p>
-    <p>
-      <input name="nutrient" type="radio" id="iron"  />
-      <label for="iron">iron</label>
-    </p>
-    <p>
-      <input name="nutrient" type="radio" id="potassium"  />
-      <label for="potassium">potassium</label>
-    </p>
-  </form>
-</div>
-<br>
-<br>
-<button class="btn waves-effect waves-light" type="submit" name="action">Submit
-  </button>
-</div>
-<div class="container" id="results">
-<div class="chart">
-  <h5>Nutrients you need</h5>
- <img src="assets/css/apple.png" class="chartStandIn" alt="apple">
-</div>
-<div id="nutrientDiscription">
-  <h5>Information about nutrient</h5>
-  <span id="nutrientInfo">What is a headache?
-Headache is defined as a pain arising from the head or upper neck of the body. The pain originates from the tissues and structures that surround the skull or the brain because the brain itself has no nerves that give rise to the sensation of pain (pain fibers). The thin layer of tissue (periosteum) that surrounds bones, muscles that encase the skull, sinuses, eyes, and ears, as well as thin tissues that cover the surface of the brain and spinal cord (meninges), arteries, veins, and nerves, all can become inflamed or irritated and cause headache. The pain may be a dull ache, sharp, throbbing, constant, intermittent, mild, or intense.
-</span>
-  </div>
-</div>
+        <div id="nutrientList">
+            <label><h6>Please choose the nutrient</h6></label>
+            <br>
+            <br>
+          <form action="chooseNutrient">
+            <p>
+            <input name="nutrient" type="radio" id="calcium" />
+            <label for="calcium">calcium</label>
+            </p>
+            <p>
+            <input name="nutrient" type="radio" id="magnesium" />
+            <label for="magnesium">magnesium</label>
+            </p>
+            <p>
+            <input name="nutrient" type="radio" id="iron"  />
+            <label for="iron">iron</label>
+            </p>
+            <p>
+            <input name="nutrient" type="radio" id="potassium"  />
+            <label for="potassium">potassium</label>
+            </p>
+          </form>
+        </div>
+        <br>
+        <br>
+        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+        </button>
+      </div>
+    <div class="col s9">
+      <div class="row">
+        <div class="col s6" id="results">
+          <div class="chart">
+            <h5>Nutrients you need</h5>
+            <img src="assets/css/apple.png" class="chartStandIn" alt="apple">
+          </div>
+        </div>
 
+        <div class="col s6" id="nutrientDiscription">
+          <h5>Information about nutrient</h5>
+          <span id="nutrientInfo">Vitamins, including vitamin C, are organic compounds. An organic compound is one that exists in living things and contains the elements carbon and oxygen.
 
+          Vitamin C is water soluble, and the body does not store it. To maintain adequate levels of vitamin C, humans need a daily intake of food that contains it.
+
+          Vitamin C plays an important role in a number of bodily functions including the production of collagen, L-carnitine, and some neurotransmitters. It helps metabolize proteins and its antioxidant activity may reduce the risk of some cancers.
+
+          Collagen, which vitamin C helps produce, is the main component of connective tissue and the most abundant protein in mammals. Between 1 and 2 percent of muscle tissue is collagen. It is a vital component in fibrous tissues such as:
+
+          tendons
+          ligaments
+          skin
+          cornea
+          cartilage
+          bones
+          the gut
+          blood vessels
+          </span>
+        </div>
+      </div>
+      <div class="row">
+      <div class="col s12" id="reccomendedFoods">
+        <ul>
+          <li>x</li>
+          <li>y</li>
+          <li>z</li>
+        </ul>
+      </div>
+    </div>
+     </div> 
+
+    
+
+    </div>
   </body>
 </html>
+
+    

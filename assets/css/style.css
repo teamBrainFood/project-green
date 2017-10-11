@@ -1,48 +1,14 @@
-#forms{
-	max-width: 400px;
-	float:left;
-	margin-left: 15px;
-	border-right: solid;
-	border-style: solid;
-	border-color: grey;
-	margin-right: 5px;
-}
-.brand-logo{
-	margin-left: 15px;
-}
-#lastName{
-	clear:both;
-}
-#explaination{
-	min-height:800px;
-	margin:15px;
-	margin-left: 15px;
-	background-color:pink;
-	float:left;
-	padding:40px;
-}
+
 .foodPhoto{
 	max-height: 500px;
 	max-width: 500px;
 }
-p #explaination{
-	float:left;
-}
 .chart{
-	float:left;
 	margin-left: 20px;
 	padding-left: 20px;
-}
-h5 .chart{
-	padding-bottom: 5px;
 }
 .chartStandIn{
 	max-width: 300px;
 	max-height:300px;
 }
-#nutrientDiscription{
-	float:left;
-	max-width: 500px;
-	margin-left: 20px;
-	padding-left: 20px;
-}
+
