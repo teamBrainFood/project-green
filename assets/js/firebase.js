@@ -15,10 +15,11 @@
 
   // Below are our user input variables that we also need to create in firebase to store
   userInputs = {
+      name, name,
       age: age,
+      height: height,
       weight: weight,
-      gender: gender,
-      deficiency: deficiency
+      gender: gender
     };
 
     //Below code is how we push iputs to firebase when we click submit
