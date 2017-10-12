@@ -9,6 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
   </head>
   <body>
     <nav>
@@ -21,92 +22,83 @@
       </ul> -->
     </div>
   </nav>
-  <div class="container" id="forms">
+  <div class="container">
     <div class="row">
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s10">
-          <input id="first_name" type="text" class="validate">
-          <label for="first_name">First Name</label>
+      <div class="col s3">
+        <form id="userForm">
+            <div class="input-field col s12">
+              <input id="name" type="text" class="validate">
+              <label for="userName">Name</label>
+            </div>
+            <div class="input-field col s12">
+              <input id="age" type="text" class="validate">
+              <label for="age">Age</label>
+            </div>
+            <div class="input-field col s12">
+              <input id="height" type="text" class="validate">
+              <label for="height">Height</label>
+            </div>
+            <div class="input-field col s12">
+              <input id="weight" type="text" class="validate">
+              <label for="weight">Weight</label>
+            </div>
+        </form>
+
+        <div id="chooseGender">
+          <label><h6>Please choose your gender</h6></label>
+          <br>
+          <br>
+          <form action="maleFemale">
+              <p>
+                <input name="gender" type="radio" id="male" value="male" />
+                <label for="male">male</label>
+              </p>
+              <p>
+                <input name="gender" type="radio" id="female" value="female" />
+                <label for="female">female</label>
+              </p>
+          </form>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s10">
-          <input id="last_name" type="text" class="validate">
-          <label for="last_name">Last Name</label>
-        </div>
-      </div>
-       <div class="row">
-        <div class="input-field col s10">
-          <input id="age" type="text" class="validate">
-          <label for="age">Age</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s10">
-          <input id="height" type="text" class="validate">
-          <label for="height">Height</label>
-        </div>
-      </div>
-        <div class="row">
-        <div class="input-field col s10">
-          <input id="weight" type="text" class="validate">
-          <label for="weight">Weight</label>
-        </div>
-      </div>
-        </div>
-    </form>
-      <div id="chooseGender">
-        <label><h6>Please choose your gender</h6></label>
+
         <br>
         <br>
-       <form action="maleFemale">
-    <p>
-      <input name="gender" type="radio" id="male" />
-      <label for="male">male</label>
-    </p>
-    <p>
-      <input name="gender" type="radio" id="female" />
-      <label for="female">female</label>
-    </p>
-  </form>
-</div>
-<br>
-<br>
-<div id="symptomList">
-  <label><h6>Please choose your symptom</h6></label>
-  <br>
-  <br>
-   <form action="chooseSymptom">
-    <p>
-      <input name="symptom" type="radio" id="fatigue" />
-      <label for="fatigue">fatigue</label>
-    </p>
-    <p>
-      <input name="symptom" type="radio" id="muscleCramps" />
-      <label for="muscleCramps">muscle cramps</label>
-    </p>
-    <p>
-      <input name="symptom" type="radio" id="headache"  />
-      <label for="headache">headache</label>
-    </p>
-    <p>
-      <input name="symptom" type="radio" id="stomachAche"  />
-      <label for="stomachAche">stomach ache</label>
-    </p>
-  </form>
-</div>
-<br>
-<br>
-<button class="btn waves-effect waves-light" type="submit" name="action">Submit
-  </button>
-</div>
-<div class="container" id="explaination">
-<h3>This is where it will all be explained!</h3>
-<img src="assets/css/apple.png" class="foodPhoto" alt="apple">
+        <div id="nutrientList">
+            <label><h6>Please choose the nutrient</h6></label>
+            <br>
+            <br>
+          <form action="chooseNutrient">
+            <p>
+            <input name="nutrient" type="radio" id="calcium" value="calcium" />
+            <label for="calcium">calcium</label>
+            </p>
+            <p>
+            <input name="nutrient" type="radio" id="magnesium" value="magnesium" />
+            <label for="magnesium">magnesium</label>
+            </p>
+            <p>
+            <input name="nutrient" type="radio" id="iron" value="iron"  />
+            <label for="iron">iron</label>
+            </p>
+            <p>
+            <input name="nutrient" type="radio" id="potassium" value="potassium"  />
+            <label for="potassium">potassium</label>
+            </p>
+          </form>
+        </div>
+        <br>
+        <br>
+        <button id="submit-btn" class="btn waves-effect waves-light" type="submit" name="action">Submit
+        </button>
+      </div>
 
-<p>"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."</p>
-</div>
+      <div class="col s9" id="explaination">
+        <h3>This is where it will all be explained!</h3>
+        <img src="assets/css/apple.png" class="foodPhoto" alt="apple">
 
+        <p>"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."</p>
+      </div>
+
+    </div>
   </body>
+  <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
 </html>

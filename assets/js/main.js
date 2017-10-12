@@ -1,5 +1,4 @@
-<script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
-<script>
+$( document ).ready(function() {
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyC_JrNTPoPd0yT8XdPkM-TfRRaHRlkxXAQ",
@@ -10,8 +9,35 @@
     messagingSenderId: "26885582351"
   };
   firebase.initializeApp(config);
-
+  // Below is our variable to refrence the firebase database
   var database = firebase.database();
+
+  // all other variales
+  var name = '';
+  var age = '';
+  var height = '';
+  var weight = '';
+  var gender = '';
+  var nutrient = '';
+
+  //Below is our onClick function when we click "Submit"
+  $("#submit-btn").on("click", function() {
+    // Below prevents default functionality on clicking submit button
+    event.preventDefault();
+
+    name = $("#name").val();
+    age = $("#age").val();
+    height = $("#height").val();
+    weight = $("#weight").val();
+    gender = $("input[name=gender]:checked").val();
+    nutrient = $("input[name=nutrient]:checked").val();
+
+    console.log(name);
+    console.log(age);
+    console.log(height);
+    console.log(weight);
+    console.log(gender);
+    console.log(nutrient);
 
   // Below are our user input variables that we also need to create in firebase to store
   userInputs = {
@@ -19,10 +45,12 @@
       age: age,
       height: height,
       weight: weight,
-      gender: gender
+      gender: gender,
+      nutrient: nutrient
     };
 
     //Below code is how we push iputs to firebase when we click submit
     database.ref().push(userInputs);
 
-</script>
+  });
+});
