@@ -1,7 +1,6 @@
 
 .foodPhoto{
-	max-height: 500px;
-	max-width: 500px;
+	max-height: 200px;
 }
 .chart{
 	margin-left: 20px;
@@ -10,5 +9,9 @@
 .chartStandIn{
 	max-width: 300px;
 	max-height:300px;
+}
+
+.food-button {
+	margin: 5px;
 }
 
