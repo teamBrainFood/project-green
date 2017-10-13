@@ -26,24 +26,16 @@
     <div class="row">
       <div class="col s3">
         <form id="userForm">
-            <div class="input-field col s12">
-              <input id="name" type="text" class="validate">
-              <label for="userName">Name</label>
-            </div>
-            <div class="input-field col s12">
-              <input id="age" type="text" class="validate">
-              <label for="age">Age</label>
-            </div>
-            <div class="input-field col s12">
-              <input id="height" type="text" class="validate">
-              <label for="height">Height</label>
-            </div>
-            <div class="input-field col s12">
-              <input id="weight" type="text" class="validate">
-              <label for="weight">Weight</label>
-            </div>
+          <div class="input-field col s12">
+            <input id="name" type="text" class="validate">
+            <label for="userName">Name</label>
+          </div>
+          <div class="input-field col s12">
+            <input id="age" type="text" class="validate">
+            <label for="age">Age</label>
+          </div>
         </form>
-
+        <!-- Choose Gender -->
         <div id="chooseGender">
           <label><h6>Please choose your gender</h6></label>
           <br>
@@ -59,6 +51,36 @@
               </p>
           </form>
         </div>
+
+        <!-- Choose Activity Level -->
+        <div id="chooseActivityLevel">
+          <label><h6>How often do you exercise?</h6></label>
+          <br>
+          <br>
+          <form action="activityLevel">
+            <p>
+              <input name="activity" type="radio" id="never" value="never" />
+              <label for="never">Never</label>
+            </p>
+            <p>
+              <input name="activity" type="radio" id="monthly" value="monthly" />
+              <label for="monthly">A few times a month</label>
+            </p>
+            <p>
+              <input name="activity" type="radio" id="1" value="1" />
+              <label for="1">Once a Week</label>
+            </p>
+            <p>
+              <input name="activity" type="radio" id="2" value="2" />
+              <label for="2">a few times a week</label>
+            </p>
+            <p>
+              <input name="activity" type="radio" id="3" value="3" />
+              <label for="3">3 or more times a week</label>
+            </p>
+          </form>
+        </div>
+
         <br>
         <br>
         <div id="nutrientList">
