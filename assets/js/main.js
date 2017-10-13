@@ -15,9 +15,8 @@ $( document ).ready(function() {
   // all other variales
   var name = '';
   var age = '';
-  var height = '';
-  var weight = '';
   var gender = '';
+  var activityLevel = '';
   var nutrient = '';
 
   //Below is our onClick function when we click "Submit"
@@ -27,25 +26,22 @@ $( document ).ready(function() {
 
     name = $("#name").val();
     age = $("#age").val();
-    height = $("#height").val();
-    weight = $("#weight").val();
     gender = $("input[name=gender]:checked").val();
+    activityLevel = $("input[name=activity]:checked").val();
     nutrient = $("input[name=nutrient]:checked").val();
 
     console.log(name);
     console.log(age);
-    console.log(height);
-    console.log(weight);
     console.log(gender);
+    console.log(activityLevel);
     console.log(nutrient);
 
   // Below are our user input variables that we also need to create in firebase to store
   userInputs = {
       name, name,
       age: age,
-      height: height,
-      weight: weight,
       gender: gender,
+      activityLevel: activityLevel,
       nutrient: nutrient
     };
 
