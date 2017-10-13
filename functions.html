@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<body>
+	
+	<script>
+
+var nutrients = [
+	{	name: "iron",
+		code: 303,
+		description: "Loren Ipsum iron"
+	},
+
+	{	name: "magnesium",
+		code: 999,
+		description: "Loren Ipsum magnesium"
+	},
+
+	{	name: "calcium",
+		code: 111,
+		description: "Loren Ipsum calcium"
+	}
+
+];
+
+// function to find the code for a nutrient name
+function nutrientNumber(arrayName, itemName) {
+	
+	var i = 0;
+	var itemFound = "false";
+	
+	do {
+		var currentName = arrayName[i].name;
+
+		if (currentName == itemName) {
+			itemFound = true;
+			var itemPosition = i;
+			return arrayName[i].code;
+		} else if (i = arrayName.length) {
+			return "not found";
+			itemFound = true;
+		};    
+
+    	i++;
+
+    } while (itemFound == "false");
+
+};
+
+var nutrient = "iron";
+
+console.log(nutrientNumber(nutrients, nutrient));
+	</script>
+
+
+</body>
+</html>
