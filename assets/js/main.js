@@ -159,6 +159,16 @@ $( document ).ready(function() {
       recipeResponse = response.hits;
 
       console.log(recipeResponse);
+
+      var recipeURL = recipeResponse[0].recipe.url;
+
+      var recipeImage = recipeResponse[0].recipe.image;
+      
+      var recipeLabel = recipeResponse[0].recipe.label;
+
+      console.log(recipeURL);
+      console.log(recipeImage);
+      console.log(recipeLabel);
     });
 
   }); // end of food button click
