@@ -1,3 +1,8 @@
+.container {
+  width: 100%;
+  max-width: 1450;
+  margin: 0 auto;
+}
 
 .foodPhoto{
 	max-height: 200px;
@@ -7,8 +12,7 @@
 	padding-left: 20px;
 }
 .chartStandIn{
-	max-width: 300px;
-	max-height:300px;
+	width: 100%;
 }
 
 .food-button {
@@ -23,6 +27,7 @@ h1, h2, h3, h4, h6, a, li, label, span {
 
  h5, p, span {
   font-family: 'Roboto Slab', serif;
+  color: #4B4B4B;
 }
 
  h5 {
@@ -31,6 +36,10 @@ h1, h2, h3, h4, h6, a, li, label, span {
   font-weight: 700;
   text-transform: uppercase;
   color: #50c878; /* Emrald Green */
+}
+
+p {
+  line-height: 24px;
 }
 
 
@@ -51,6 +60,7 @@ nav {
   font-size: 24px;
   display: inline-block;
   margin: 0 7px 5px 0;
+  ext-transform: capitalize;
 }
 
 .reccomended-food-list li:hover {
