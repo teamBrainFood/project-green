@@ -14,16 +14,12 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800|Roboto+Slab:300,400,700" rel="stylesheet">
   </head>
   <body>
-    <nav>
+  <nav>
     <div class="nav-wrapper">
       <a href="#" class="brand-logo">Project Green</a>
-      <!-- <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">JavaScript</a></li>
-      </ul> -->
     </div>
   </nav>
+
   <div class="container">
     <div class="row">
       <div class="col s3">
@@ -48,7 +44,6 @@
         <div id="chooseGender">
           <label><h6>Please choose your gender</h6></label>
           <br>
-          <br>
           <form action="maleFemale">
               <p>
                 <input name="gender" type="radio" id="male" />
@@ -59,37 +54,29 @@
                 <label for="female">female</label>
               </p>
           </form>
-        </div>
+        </div> <!--end of choose gender-->
         <br>
         <br>
-        <div id="nutrientList">
-            <label><h6>Please choose the nutrient</h6></label>
-            <br>
-            <br>
-          <form action="chooseNutrient">
-            <p>
-            <input name="nutrient" type="radio" id="calcium" />
-            <label for="calcium">calcium</label>
-            </p>
-            <p>
-            <input name="nutrient" type="radio" id="magnesium" />
-            <label for="magnesium">magnesium</label>
-            </p>
-            <p>
-            <input name="nutrient" type="radio" id="iron"  />
-            <label for="iron">iron</label>
-            </p>
-            <p>
-            <input name="nutrient" type="radio" id="potassium"  />
-            <label for="potassium">potassium</label>
-            </p>
-          </form>
-        </div>
+      
+        <label><h6>Please choose your nutrient</h6></label>
+        <select class="browser-default" name="nutrient">
+          <option value="Nutrients" disabled selected>Nutrients</option>
+          <option value="calcium">calcium</option>
+          <option value="magnesium">magnesium</option>
+          <option value="iron">iron</option>
+          <option value="potassium">potassium</option>
+          <option value="zinc">zinc</option>
+          <option value="VitiminC">Vitimin C</option>
+          <option value="VitiminB12">Vitimin B12</option>
+        </select>
+
         <br>
         <br>
+
         <button class="btn waves-effect waves-light" type="submit" name="action">Submit
         </button>
-      </div>
+      </div> <!-- end of col s3-->
+      
     <div class="col s9">
       <div class="row">
         <div class="col s6" id="results">
@@ -97,7 +84,7 @@
             <h5>Nutrients you need</h5>
             <img src="assets/css/apple.png" class="chartStandIn" alt="apple">
           </div>
-        </div>
+        </div> <!--end of results-->
 
         <div class="col s6" id="nutrientDiscription">
           <h5>Information about nutrient</h5>
@@ -118,8 +105,9 @@
           the gut
           blood vessels
           </span>
-        </div>
-      </div>
+        </div> <!--end of nutrientDiscription-->
+      </div> <!--end of row-->
+
 
       <!-- SUPERFOODS LIST -->
       <div class="reccomended-food-list" id="reccomendedFoods">
@@ -136,7 +124,7 @@
           <li>Chickpeas</li>
           <li>Pumpkin Seeds</li>
         </ul>
-      </div>
+      </div> <!--end of reccomended-foods-list-->
 
       <!-- SUPERFOODS LIST -->
       <div class="recipes" id="reccomendedFoods">
@@ -155,17 +143,17 @@
               <div class="card-action">
                 <a href="#">View Recipe</a>
               </div>
-            </div>
-          </div>
+            </div> <!--end of card-->
+          </div> 
         </div>
 
-      </div>
+      </div> <!--end of recipes-->
 
-     </div>
+     </div> <!--end of col s9-->
 
 
-
-    </div>
+      </div> <!-- end of row 1-->
+    </div> <!-- end of container-->
   </body>
 </html>
 

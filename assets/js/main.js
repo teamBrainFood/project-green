@@ -55,7 +55,7 @@ $( document ).ready(function() {
     age = $("#age").val().trim();
     gender = $("input[name=gender]:checked").val();
     activityLevel = $("input[name=activity]:checked").val();
-    nutrient = $("input[name=nutrient]:checked").val();
+    // nutrient = $("input[name=nutrient]:checked").val();
 
     console.log("name " + name);
     console.log("age " + age);
