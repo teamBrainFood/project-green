@@ -85,29 +85,18 @@
 
         <br>
         <br>
-        <div id="nutrientList">
-            <label><h6>Please choose the nutrient</h6></label>
-            <br>
-            <br>
-          <form action="chooseNutrient">
-            <p>
-            <input name="nutrient" type="radio" id="calcium" value="calcium" />
-            <label for="calcium">calcium</label>
-            </p>
-            <p>
-            <input name="nutrient" type="radio" id="magnesium" value="magnesium" />
-            <label for="magnesium">magnesium</label>
-            </p>
-            <p>
-            <input name="nutrient" type="radio" id="iron" value="iron"  />
-            <label for="iron">iron</label>
-            </p>
-            <p>
-            <input name="nutrient" type="radio" id="potassium" value="potassium"  />
-            <label for="potassium">potassium</label>
-            </p>
-          </form>
-        </div>
+        <label><h6>Please choose your nutrient</h6></label>
+        <select class="browser-default" name="nutrient">
+          <option value="Nutrients" disabled selected>Nutrients</option>
+          <option value="calcium">calcium</option>
+          <option value="magnesium">magnesium</option>
+          <option value="iron">iron</option>
+          <option value="potassium">potassium</option>
+          <option value="zinc">zinc</option>
+          <option value="VitiminC">Vitimin C</option>
+          <option value="VitiminB12">Vitimin B12</option>
+        </select>
+
         <br>
         <br>
         <button id="submit-btn" class="btn waves-effect waves-light" type="submit" name="action">Submit
