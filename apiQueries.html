@@ -12,37 +12,54 @@
 	<script>
 
 	// api query for foods with a specified nutrient
-	var nutrient = 303;
-	var nutrientURL = "https://api.nal.usda.gov/ndb/nutrients/?api_key=u7cln9dkHVsbUoFLOUKnvEElzjOP58u0CNHWs0SP&max=10&fg=1100&sort=c&nutrients=" + nutrient;
+	//var nutrient = 303;
+	// var nutrientURL = "https://api.nal.usda.gov/ndb/nutrients/?api_key=u7cln9dkHVsbUoFLOUKnvEElzjOP58u0CNHWs0SP&max=10&fg=1100&sort=c&nutrients=" + nutrient;
 
-	// run ajax query
-	$.ajax({
-      url: nutrientURL,
-      method: "GET"
-    }).done(function(response) {
+	// // run ajax query
+	// $.ajax({
+ //      url: nutrientURL,
+ //      method: "GET"
+ //    }).done(function(response) {
  
- 		// assign the data array from the ajax response to a variable
-		var foodResponse = response.report.foods;
+ // 		// assign the data array from the ajax response to a variable
+	// 	var foodResponse = response.report.foods;
 
-		console.log(foodResponse);
-	});
+	// 	console.log(foodResponse);
+	// });
 
 
 	// api query for recipes based on an ingredient
-	var ingredient = "bananas"
-	var ingredientURL = "https://api.edamam.com/search?" + "&q=" + ingredient;
+	var selectedFood = "bananas";
 
-	// run ajax query
-	$.ajax({
-      url: ingredientURL,
-      method: "GET"
-    }).done(function(response) {
- 
- 		// assign the data array from the ajax response to a variable
-		var recipeResponse = response.hits;
+    console.log("selectedFood " + selectedFood);
 
-		console.log(recipeResponse);
-	});
+    //Below is the ajax query to the database to retrieve recipes
+    var ingredientURL = "https://api.edamam.com/search?" + "&q=" + selectedFood;
+
+    $.ajax({
+        url: ingredientURL,
+        method: "GET"
+      }).done(function(response) {
+   
+      // assign the ajax response to a variable
+      recipeResponse = response.hits;
+
+      console.log(recipeResponse);
+      console.log(recipeResponse.length);
+    var recipeURL = recipeResponse[0].recipe.url;
+
+    console.log(recipeURL);
+
+    var recipeImage = recipeResponse[0].recipe.image;
+
+    console.log(recipeImage);
+
+    var recipeLabel = recipeResponse[0].recipe.label;
+
+    console.log(recipeLabel);
+
+
+    });
 	</script>
 
 
