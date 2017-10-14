@@ -73,7 +73,7 @@ $( document ).ready(function() {
     };
 
     //Below code is how we push inputs to firebase when we click submit
-    database.ref().push(userInputs);
+    database.ref().set(userInputs);
 
     //Below is retrieving the nutrient code from the nutrients array
     var nutrientNumber = nutrients[nutrient].code;
