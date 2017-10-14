@@ -45,7 +45,7 @@ $( document ).ready(function() {
   Vitamin B12: {
     code: "418",
     discription: "Vitamin B12 deficiency causes tiredness, weakness, constipation, loss of appetite, weight loss, and megaloblastic anemia. Nerve problems, such as numbness and tingling in the hands and feet, can also occur. Other symptoms of vitamin B12 deficiency include problems with balance, depression, confusion, dementia, poor memory, and soreness of the mouth or tongue. Vitamin B12 deficiency can damage the nervous system even in people who don’t have anemia, so it is important to treat a deficiency as soon as possible. In infants, signs of a vitamin B12 deficiency include failure to thrive, problems with movement, delays in reaching the typical developmental milestones, and megaloblastic anemia. Large amounts of folic acid can hide a vitamin B12 deficiency by correcting megaloblastic anemia, a hallmark of vitamin B12 deficiency. But folic acid does not correct the progressive damage to the nervous system that vitamin B12 deficiency also causes. For this reason, healthy adults should not get more than 1,000 mcg of folic acid a day."
-}};  
+}};
 
   // all other variables
   var name = '';
@@ -107,7 +107,7 @@ $( document ).ready(function() {
 
       // for each food in the response, check it is unique and add it to foodArray
       for (var i = 0; i < foodResponse.length; i++) {
-        
+
         var foodString = foodResponse[i].name;
 
         // get the first part of the food name before the comma
@@ -124,14 +124,14 @@ $( document ).ready(function() {
         };
 
       }; // end of adding foods to array
-      
+
       console.log(foodArray);
 
       var numberButtons = 10; // specifies the number of buttons to create
 
       // create buttons
 
-      // if there are less than 10 items in the array, only create that number of buttons  
+      // if there are less than 10 items in the array, only create that number of buttons
       if (foodArray.length < 10) {
         numberButtons = foodArray.length
       };
@@ -139,12 +139,12 @@ $( document ).ready(function() {
       // create each button
       for (var i = 0; i < numberButtons; i++) {
 
-        var foodButton = $("<button>");
-            foodButton.addClass("btn waves-effect waves-light food-button");
+        var foodButton = $("<li>");
+            foodButton.addClass("food-button");
             foodButton.attr("data-food", foodArray[i]);
             foodButton.text(foodArray[i]);
 
-        $("#explanation").prepend(foodButton);
+        $("#superfoods").prepend(foodButton);
 
       }; // end of for loop
 
@@ -166,11 +166,21 @@ $( document ).ready(function() {
         url: ingredientURL,
         method: "GET"
       }).done(function(response) {
-   
+
       // assign the ajax response to a variable
       recipeResponse = response.hits;
 
       console.log(recipeResponse);
+
+      var recipeURL = recipeResponse[0].recipe.url;
+
+      var recipeImage = recipeResponse[0].recipe.image;
+      
+      var recipeLabel = recipeResponse[0].recipe.label;
+
+      console.log(recipeURL);
+      console.log(recipeImage);
+      console.log(recipeLabel);
     });
 
   }); // end of food button click
