@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+	<script>
+
+	// api query for recipes based on an ingredient
+	var selectedFood = "bananas";
+
+    console.log("selectedFood " + selectedFood);
+
+    //Below is the ajax query to the database to retrieve recipes
+    var ingredientURL = "https://api.edamam.com/search?" + "&q=" + selectedFood;
+
+    $.ajax({
+        url: ingredientURL,
+        method: "GET"
+      }).done(function(response) {
+
+      // assign the ajax response to a variable
+      recipeResponse = response.hits;
+
+      console.log(recipeResponse);
+      console.log(recipeResponse.length);
+    var recipeURL = recipeResponse[0].recipe.url;
+
+    console.log(recipeURL);
+
+    var recipeImage = recipeResponse[0].recipe.image;
+
+    console.log(recipeImage);
+
+    var recipeLabel = recipeResponse[0].recipe.label;
+
+    console.log(recipeLabel);
+
+
+    });
+	</script>
+
+
+</body>
+</html>
