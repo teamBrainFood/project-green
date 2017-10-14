@@ -65,7 +65,7 @@ $( document ).ready(function() {
 
     // Below are our user input variables that we also need to create in firebase to store
     var userInputs = {
-        name, name,
+        name: name,
         age: age,
         gender: gender,
         activityLevel: activityLevel,
@@ -75,14 +75,15 @@ $( document ).ready(function() {
     //Below code is how we push inputs to firebase when we click submit
     database.ref().push(userInputs);
 
-    //Below is the ajax query to the database to retrieve 25 foods
+    //Below is retrieving the nutrient code from the nutrients array
     var nutrientNumber = nutrients[nutrient].code;
 
     console.log("nutrientNumber " + nutrientNumber);
 
+    //Below is the ajax query to the database to retrieve 25 foods
     $.ajax({
       type: "GET",
-      url: "https://api.nal.usda.gov/ndb/nutrients/?api_key=u7cln9dkHVsbUoFLOUKnvEElzjOP58u0CNHWs0SP&max=25&fg=1100&sort=c&nutrients=" + nutrientNumber,
+      url: "https://api.nal.usda.gov/ndb/nutrients/?api_key=u7cln9dkHVsbUoFLOUKnvEElzjOP58u0CNHWs0SP&max=25&fg=1100&sort=c&nutrients=" + nutrientNumber
     }).done(function(response) {
 
       // assign the ajax response to a variable
