@@ -88,6 +88,11 @@ $( document ).ready(function() {
     //Below code is how we push inputs to firebase when we click submit
     database.ref().set(userInputs);
 
+    // ******* Below is how we populate the "Learn More" section with the corresponding nutrient info
+    var copy = nutrients[nutrient].discription;
+    $("#mineral-copy").append("<p>" + copy + "</p>");
+
+
     //Below is retrieving the nutrient code from the nutrients array
     var nutrientNumber = nutrients[nutrient].code;
 
@@ -182,8 +187,8 @@ $( document ).ready(function() {
         // Below is how we create our Recipe Card in HTML
         var recipeCard = $('<div>');
           recipeCard.addClass("recipes");
-          recipeCard.html('<div class="row"><div class="col s12 m7"><div class="card"><div class="card-image"><img src="' + recipeImage + '"><span class="card-title">' + recipeLabel + '</span></div><div class="card-content"></div><div class="card-action"><a id="recipe-url" href="' + recipeURL + '">View Recipe</a></div></div></div></div>');
-          $('#test-div').append(recipeCard);
+          recipeCard.html('<div class="card"><div class="card-image"><img src="' + recipeImage + '"><span class="card-title">' + recipeLabel + '</span></div><div class="card-action"><a id="recipe-url" href="' + recipeURL + '">View Recipe</a></div></div>');
+          $('#recipe-div').append(recipeCard);
       }
 
     }); // end of recipe ajax function
