@@ -66,7 +66,7 @@ $( document ).ready(function() {
     name = $("#name").val().trim();
     age = $("#age").val().trim();
     gender = $("input[name=gender]:checked").val();
-    activityLevel = $("input[name=activity]:checked").val();
+    activityLevel = $('#chooseActivityLevel').find(":selected").val();
     nutrient = $('#nutrientSelected').find(":selected").val();
 
 
