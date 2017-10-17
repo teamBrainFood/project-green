@@ -45,6 +45,15 @@ $( document ).ready(function() {
   "Vitamin B12": {
     code: "418",
     discription: "Vitamin B12 deficiency causes tiredness, weakness, constipation, loss of appetite, weight loss, and megaloblastic anemia. Nerve problems, such as numbness and tingling in the hands and feet, can also occur. Other symptoms of vitamin B12 deficiency include problems with balance, depression, confusion, dementia, poor memory, and soreness of the mouth or tongue. Vitamin B12 deficiency can damage the nervous system even in people who don’t have anemia, so it is important to treat a deficiency as soon as possible. In infants, signs of a vitamin B12 deficiency include failure to thrive, problems with movement, delays in reaching the typical developmental milestones, and megaloblastic anemia. Large amounts of folic acid can hide a vitamin B12 deficiency by correcting megaloblastic anemia, a hallmark of vitamin B12 deficiency. But folic acid does not correct the progressive damage to the nervous system that vitamin B12 deficiency also causes. For this reason, healthy adults should not get more than 1,000 mcg of folic acid a day."
+},
+  "copper": {
+    code: "312",
+    discription: "Copper is a mineral that is found throughout the body. It helps your body make red blood cells and keeps nerve cells and your immune system healthy. It also helps form collagen, a key part of bones and connective tissue. Copper may also act as an antioxidant, reducing free radicals that can damage cells and DNA. Copper helps the body absorb iron. Your body also needs copper to make energy. Your body does not need much copper. Many people do not get enough copper in their diet, but it is rare to be truly deficient in copper. Signs of possible copper deficiency include anemia, low body temperature, bone fractures and osteoporosis, low white blood cell count, irregular heartbeat, loss of pigment from the skin, and thyroid problems. People who take high amounts of zinc, iron, or vitamin C may need more copper, but you should ask your health care provider before taking copper supplements. Too much copper can be dangerous."
+
+},
+  "manganese": {
+    code: "315",
+    discription: "Manganese is a trace mineral that is present in the human body in very small amounts, primarily in the bones, liver, kidneys and pancreas, according to the University of Maryland Medical School. It is important in the formation of bones, connective tissues, blood-clotting factors and sex hormones, and also is involved in fat and carbohydrate metabolism, calcium absorption and blood sugar regulation. In addition, it is important for brain and nerve function. Manganese may be helpful in treating osteoporosis, arthritis, premenstrual syndrome, diabetes and epilepsy."
 }};
 
   // all other variables
