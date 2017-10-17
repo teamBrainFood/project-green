@@ -48,6 +48,17 @@ nav {
   background-color: #50c878; /* Emrald Green */
 }
 
+/* SIDEBAR STYLES */
+.sidebar {
+  background-color: #F7F7F7;
+  padding: 20px !important;
+}
+
+/* MINERAL COPY */
+.mineral-copy p {
+  max-width: 700px;
+}
+
 
 
 /* SUPERFOODS LIST */
