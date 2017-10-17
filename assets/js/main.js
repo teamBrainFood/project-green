@@ -88,7 +88,21 @@ $( document ).ready(function() {
     //Below code is how we push inputs to firebase when we click submit
     database.ref().set(userInputs);
 
-    // ******* Below is how we populate the "Learn More" section with the corresponding nutrient info
+    //Below code is how we remove the blank UI state when the user pushes submit, so we can populate it with nutrient data
+    $(".blank-state").remove();
+
+    // Adding in Headers
+    $('.mineral-copy').empty();
+    $('.recommended-food-list').empty();
+    $('#recipe-div').empty();
+
+    // Adding in Headers
+    $('.mineral-copy').html("<h5>" + nutrient + "</h5>")
+    $('.recommended-food-list').html("<h5>Superfoods</h5>")
+    $('#recipe-div').html("<h5>Recipes</h5>")
+
+
+    // Below is how we populate the "Learn More" section with the corresponding nutrient info
     var copy = nutrients[nutrient].discription;
     $("#mineral-copy").append("<p>" + copy + "</p>");
 
@@ -150,7 +164,7 @@ $( document ).ready(function() {
             foodButton.attr("data-food", foodArray[i]);
             foodButton.text(foodArray[i]);
 
-        $("#superfoods").prepend(foodButton);
+        $(".recommended-food-list").append(foodButton);
 
       }; // end of for loop
 
@@ -160,6 +174,9 @@ $( document ).ready(function() {
 
   //Below is our onClick function when we click a food button
   $(document.body).on("click", ".food-button", function() {
+
+    $('#recipe-div').empty();
+    $('#recipe-div').html("<h5>Recipes</h5>")
 
     var selectedFood = $(this).attr("data-food");
 
