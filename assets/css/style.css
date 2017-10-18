@@ -107,9 +107,9 @@ label.active::after {
   background-color: #4B4B4B !important;
 }
 
-#chooseGender {
+/*#chooseGender {
   margin-top: 180px;
-}
+}*/
 
 .input-field {
   padding-left: 0 !important;
