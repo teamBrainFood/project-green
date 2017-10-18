@@ -227,8 +227,8 @@ $( document ).ready(function() {
 
       // if age, gender or activity level information is not provided
       if (age === "Age" || gender === "Gender" || activityLevel === "Activity") {
-    
-        // empty the div showing calorie requriements 
+
+        // empty the div showing calorie requriements
         $('#calorie-limit').empty();
       }
 
@@ -283,7 +283,7 @@ $( document ).ready(function() {
         // Below is how we create our Recipe Card in HTML
         var recipeCard = $('<div>');
           recipeCard.addClass("recipes");
-          recipeCard.html('<div class="card"><div class="card-image"><img src="' + recipeImage + '"><span class="card-title">' + recipeLabel + '</span></div><div class="card-action"><a id="recipe-url" href="' + recipeURL + '">View Recipe</a></div></div>');
+          recipeCard.html('<div class="card"><div class="card-image"><img src="' + recipeImage + '"><span class="card-title">' + recipeLabel + '</span></div><div class="card-action"><a id="recipe-url" href="' + recipeURL + '" target="_blank">View Recipe</a></div></div>');
           $('#recipe-div').append(recipeCard);
       }
 
