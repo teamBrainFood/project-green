@@ -54,6 +54,10 @@ $( document ).ready(function() {
   "manganese": {
     code: "315",
     discription: "Manganese is a trace mineral that is present in the human body in very small amounts, primarily in the bones, liver, kidneys and pancreas, according to the University of Maryland Medical School. It is important in the formation of bones, connective tissues, blood-clotting factors and sex hormones, and also is involved in fat and carbohydrate metabolism, calcium absorption and blood sugar regulation. In addition, it is important for brain and nerve function. Manganese may be helpful in treating osteoporosis, arthritis, premenstrual syndrome, diabetes and epilepsy."
+},
+  "phosphorus": {
+    code: "305",
+    discription: "Next to calcium, phosphorus is the most abundant mineral in the body. These 2 important nutrients work closely together to build strong bones and teeth. About 85% of the body's phosphorus is in bones and teeth. Phosphorous is also present in smaller amounts in cells and tissues throughout the body. Phosphorus helps filter out waste in the kidneys and plays an essential role in how the body stores and uses energy. It also helps reduce muscle pain after a workout. Phosphorus is needed for the growth, maintenance, and repair of all tissues and cells, and for the production of the genetic building blocks, DNA and RNA. Phosphorus is also needed to help balance and use other vitamins and minerals, including vitamin D, iodine, magnesium, and zinc."
 }};
 
   // all other variables
@@ -97,7 +101,21 @@ $( document ).ready(function() {
     //Below code is how we push inputs to firebase when we click submit
     database.ref().set(userInputs);
 
-    // ******* Below is how we populate the "Learn More" section with the corresponding nutrient info
+    //Below code is how we remove the blank UI state when the user pushes submit, so we can populate it with nutrient data
+    $(".blank-state").remove();
+
+    // Adding in Headers
+    $('.mineral-copy').empty();
+    $('.recommended-food-list').empty();
+    $('#recipe-div').empty();
+
+    // Adding in Headers
+    $('.mineral-copy').html("<h5>" + nutrient + "</h5>")
+    $('.recommended-food-list').html("<h5>Superfoods</h5>")
+    $('#recipe-div').html("<h5>Recipes</h5>")
+
+
+    // Below is how we populate the "Learn More" section with the corresponding nutrient info
     var copy = nutrients[nutrient].discription;
     $("#mineral-copy").append("<p>" + copy + "</p>");
 
@@ -159,7 +177,7 @@ $( document ).ready(function() {
             foodButton.attr("data-food", foodArray[i]);
             foodButton.text(foodArray[i]);
 
-        $("#superfoods").prepend(foodButton);
+        $(".recommended-food-list").append(foodButton);
 
       }; // end of for loop
 
@@ -169,6 +187,9 @@ $( document ).ready(function() {
 
   //Below is our onClick function when we click a food button
   $(document.body).on("click", ".food-button", function() {
+
+    $('#recipe-div').empty();
+    $('#recipe-div').html("<h5>Recipes</h5>")
 
     var selectedFood = $(this).attr("data-food");
 
