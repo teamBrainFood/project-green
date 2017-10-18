@@ -56,6 +56,38 @@ $( document ).ready(function() {
     discription: "Manganese is a trace mineral that is present in the human body in very small amounts, primarily in the bones, liver, kidneys and pancreas, according to the University of Maryland Medical School. It is important in the formation of bones, connective tissues, blood-clotting factors and sex hormones, and also is involved in fat and carbohydrate metabolism, calcium absorption and blood sugar regulation. In addition, it is important for brain and nerve function. Manganese may be helpful in treating osteoporosis, arthritis, premenstrual syndrome, diabetes and epilepsy."
 }};
 
+// Calorie Array
+ var calories = {
+    4: {
+    "male": [1000, 1100, 1200, 1300, 1400],
+    "female": [1000, 1100, 1200, 1300, 1400]
+      },
+    9: {
+    "male": [1400, 1500, 1600, 1800, 2000],
+    "female": [1200, 1400, 1500, 1600, 1800]
+    },
+    14: {
+    "male": [1800, 1900, 2000, 2300, 2600],
+    "female": [1600, 1700, 1900, 2000, 2200]
+    },
+    19: {
+    "male": [2200, 2400, 2800, 3000, 3200],
+    "female": [1800, 2000, 2100, 2200, 2400]
+    },
+    31: {
+    "male": [2400, 2600, 2800, 2900, 3000],
+    "female": [2000, 2100, 2200, 2300, 2400]
+    },
+    51: {
+    "male": [2200, 2400, 2600, 2800, 3000],
+    "female": [1800, 2000, 2050, 2100, 2200]
+    },
+    999: {
+    "male": [2000, 2200, 2400, 2500, 2800],
+    "female": [1600, 1800, 1900, 2000, 2200]
+    }
+  };
+
   // all other variables
   var name = '';
   var age = '';
@@ -73,8 +105,8 @@ $( document ).ready(function() {
     event.preventDefault();
 
     name = $("#name").val().trim();
-    age = $("#age").val().trim();
-    gender = $("input[name=gender]:checked").val();
+    age = $('#age').find(":selected").val();
+    gender = $('#gender').find(":selected").val();
     activityLevel = $('#chooseActivityLevel').find(":selected").val();
     nutrient = $('#nutrientSelected').find(":selected").val();
 
@@ -102,11 +134,13 @@ $( document ).ready(function() {
 
     // Adding in Headers
     $('.mineral-copy').empty();
+    $('#calorie-div').empty();
     $('.recommended-food-list').empty();
     $('#recipe-div').empty();
 
     // Adding in Headers
     $('.mineral-copy').html("<h5>" + nutrient + "</h5>")
+    $('#calorie-div').html("<h5>Recommended Daily Intake</h5>")
     $('.recommended-food-list').html("<h5>Superfoods</h5>")
     $('#recipe-div').html("<h5>Recipes</h5>")
 
@@ -178,6 +212,19 @@ $( document ).ready(function() {
       }; // end of for loop
 
     }); // end of nutrition database response
+
+  // Calorie Calculation
+  var calorieLimit = 2000;
+
+  if (age === "Age" || gender === "Gender" || activityLevel === "Activity") {
+    $('#calorie-div').empty();
+  }
+  else {
+  calorieLimit = calories[age][gender][activityLevel];
+  $('#calorie-div').append("<p>" + calorieLimit + " Calories</p>");
+  }
+
+  // console.log(calorieLimit);
 
   }); // end of submit button click
 
