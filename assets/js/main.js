@@ -114,6 +114,7 @@ $( document ).ready(function() {
     // Below prevents default functionality on clicking submit button
     event.preventDefault();
 
+    // get values from user input form
     name = $("#name").val().trim();
     age = $('#age').find(":selected").val();
     gender = $('#chooseGender').find(":selected").val();
@@ -139,10 +140,10 @@ $( document ).ready(function() {
     //Below code is how we push inputs to firebase when we click submit
     database.ref().set(userInputs);
 
-    //Below code is how we remove the blank UI state when the user pushes submit, so we can populate it with nutrient data
+    //Below code is how we remove the blank UI state when the user pushes submit
     $(".blank-state").remove();
 
-    // Adding in Headers
+    // Empty the content divs
     $('.mineral-copy').empty();
     $('.recommended-food-list').empty();
     $('#recipe-div').empty();
@@ -224,21 +225,21 @@ $( document ).ready(function() {
     // Below is the calorie calculation
     var calorieLimit = 2000;
 
-    // if age, gender or activity level information is not provided
-     if (age === "Age" || gender === "Gender" || activityLevel === "Activity") {
+      // if age, gender or activity level information is not provided
+      if (age === "Age" || gender === "Gender" || activityLevel === "Activity") {
     
-       // empty the div showing calorie requriements 
-       $('#calorie-limit').empty();
-     }
+        // empty the div showing calorie requriements 
+        $('#calorie-limit').empty();
+      }
 
-     else {
+      else {
 
-    // get the calorie limit from the calories object and display it
-       calorieLimit = calories[age][gender][activityLevel];
-       $('#calorie-limit').empty();
-       $('#calorie-limit').append("<h5>Recommended Calorie Limit</h5>");
-       $('#calorie-limit').append("<p>" + calorieLimit + " Calories</p>");
-     }
+        // get the calorie limit from the calories object and display it
+        calorieLimit = calories[age][gender][activityLevel];
+        $('#calorie-limit').empty();
+        $('#calorie-limit').append("<h5>Recommended Calorie Limit</h5>");
+        $('#calorie-limit').append("<p>" + calorieLimit + " Calories</p>");
+      }
 
   }); // end of submit button click
 
@@ -264,9 +265,17 @@ $( document ).ready(function() {
       recipeResponse = response.hits;
 
       console.log(recipeResponse);
+      console.log(recipeResponse.length);
 
+      // if there are no recipes, display a message
+      if (recipeResponse.length == 0) {
+        $('#recipe-div').append("<p>Sorry, there are no recipes available with that ingredient.</p><p>Please try another ingredient.</p>")
+      };
+
+      // create a recipe card for each recipe in the response
       for (var i = 0; i < recipeResponse.length; i++) {
 
+        // get recipe information from the response object
         var recipeURL = recipeResponse[i].recipe.url;
         var recipeImage = recipeResponse[i].recipe.image;
         var recipeLabel = recipeResponse[i].recipe.label;
@@ -281,6 +290,5 @@ $( document ).ready(function() {
     }); // end of recipe ajax function
 
   }); // end of food button click
-
 
 }); // end of document.ready
