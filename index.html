@@ -21,119 +21,84 @@
   </nav>
   <div class="container">
     <div class="row">
-      <div class="col s3">
+      <div class="sidebar">
         <form id="userForm">
           <div class="input-field col s12">
             <input id="name" type="text" class="validate">
-            <label for="userName">Name</label>
+            <label for="userName" class="active">Name</label>
           </div>
           <div class="input-field col s12">
-            <input id="age" type="text" class="validate">
+            <input id="age" type="number" class="validate">
             <label for="age">Age</label>
           </div>
         </form>
+
         <!-- Choose Gender -->
         <div id="chooseGender">
-          <label><h6>Please choose your gender</h6></label>
+          <h6>Your Gender:</h6>
           <form action="maleFemale">
               <p>
                 <input name="gender" type="radio" id="male" value="male" />
-                <label for="male">male</label>
+                <label for="male">Male</label>
               </p>
               <p>
                 <input name="gender" type="radio" id="female" value="female" />
-                <label for="female">female</label>
+                <label for="female">Female</label>
               </p>
           </form>
         </div>
-        <br>
-        <br>
-        <!-- Choose Activity Level -->
-        <div id="chooseActivityLevel">
-          <label><h6>How often do you exercise?</h6></label>
-          <form action="activityLevel">
-            <p>
-              <input name="activity" type="radio" id="never" value="never" />
-              <label for="never">Never</label>
-            </p>
-            <p>
-              <input name="activity" type="radio" id="monthly" value="monthly" />
-              <label for="monthly">A few times a month</label>
-            </p>
-            <p>
-              <input name="activity" type="radio" id="1" value="1" />
-              <label for="1">Once a Week</label>
-            </p>
-            <p>
-              <input name="activity" type="radio" id="2" value="2" />
-              <label for="2">a few times a week</label>
-            </p>
-            <p>
-              <input name="activity" type="radio" id="3" value="3" />
-              <label for="3">3 or more times a week</label>
-            </p>
-          </form>
-        </div>
 
-        <br>
-        <br>
-        <!-- choose nutrient -->
-        <label><h6>Please choose your nutrient</h6></label>
-        <select class="browser-default" id="nutrientSelected">
-          <option value="Nutrients" disabled selected>Nutrients</option>
-          <option value="calcium">calcium</option>
-          <option value="magnesium">magnesium</option>
-          <option value="iron">iron</option>
-          <option value="potassium">potassium</option>
-          <option value="zinc">zinc</option>
-          <option value="Vitamin C">Vitamin C</option>
-          <option value="Vitamin B12">Vitamin B12</option>
+        <!-- Choose Activity Level -->
+        <h6>How often do you exercise? </h6>
+        <select class="browser-default" id="chooseActivityLevel">
+          <option value="Activity" disabled selected>Activity Level</option>
+          <option value="never">Never</option>
+          <option value="monthly">A few times a month</option>
+          <option value="onceWeekly">Once a Week</option>
+          <option value="weekly">A few times a week</option>
+          <option value="3Weekly">3 or more times a week</option>
         </select>
 
-        <br>
-        <br>
+        <!-- choose nutrient -->
+        <h6>Please choose your nutrient</h6>
+        <select class="browser-default" id="nutrientSelected">
+          <option value="Nutrients" disabled selected>Nutrients</option>
+          <option value="calcium">Calcium</option>
+          <option value="magnesium">Magnesium</option>
+          <option value="iron">Iron</option>
+          <option value="potassium">Potassium</option>
+          <option value="zinc">Zinc</option>
+          <option value="Vitamin C">Vitamin C</option>
+          <option value="Vitamin B12">Vitamin B12</option>
+          <option value="manganese">Manganese</option>
+          <option value="copper">Copper</option>
+        </select>
+
         <button id="submit-btn" class="btn waves-effect waves-light" type="submit" name="action">Submit
         </button>
       </div>
 
-      <div class="col s9" id="explanation">
 
+      <div id="explanation">
+        <!-- BLANK STATE -->
+        <div class="blank-state">
+          <img src="assets/images/leaf.svg" alt="">
+          <h4>Let's Get Started</h4>
+          <p>First, fill out the panel on the left and click submit. You will learn more about the nutrient you selected and how much energy you should consume per day. Enjoy the recipie cards!</p>
+        </div>
         <!-- COPY FOR SELECTED MINERAL -->
         <div class="mineral-copy" id="mineral-copy">
-          <h5>Learn More</h5>
-          <p>"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."</p>
+          <!-- <h5>Learn More</h5> -->
         </div>
-
       <!-- SUPERFOODS LIST -->
-      <div class="reccomended-food-list">
-        <h5>Superfoods</h5>
+      <div class="recommended-food-list">
+        <!-- <h5>Superfoods</h5> -->
         <ul id="superfoods">
         </ul>
       </div>
-
         <!-- RECIPE CARD -->
-        <div class="col s12" id="test-div">
-
-          <div class="recipes" id="reccomendedFoods">
-            <h5>Recipies</h5>
-             <div class="row">
-              <div class="col s12 m7">
-                <div class="card">
-                  <div class="card-image">
-                    <img src="assets/images/artchioke.jpg">
-                    <span class="card-title"></span>
-                  </div>
-                  <div class="card-content">
-                    <p>Here is where a breif summary of the recipe will go.</p>
-                  </div>
-                  <div class="card-action">
-                    <a id="recipe-url" href="#">View Recipe</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-      </div> <!-- END OF EXPLANATION DIV -->
+        <div id="recipe-div" style="padding-left: 0;">
+        </div> <!-- END OF EXPLANATION DIV -->
       </div>
 
 
