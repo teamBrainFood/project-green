@@ -4,105 +4,137 @@
     <meta charset="utf-8">
     <title>BrainFood</title>
 
+    <!-- links to jquery, materialize and ajax libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+    
+    <!-- link to javascript file -->
     <script type="text/javascript" src="assets/js/main.js"></script>
 
+    <!-- link to materialize cdn -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+    <!-- link to stylesheet -->
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- link to google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800|Roboto+Slab:300,400,700" rel="stylesheet">
+
   </head>
+
   <body>
+
+    <!-- logo in nav bar -->
     <nav>
     <div class="nav-wrapper">
       <a href="#" class="brand-logo">Project Green</a>
     </div>
-  </nav>
-  <div class="container">
-    <div class="row">
-      <div class="sidebar">
-        <form id="userForm">
-          <div class="input-field col s12">
-            <input id="name" type="text" class="validate">
-            <label for="userName" class="active">Name</label>
-          </div>
-          <div class="input-field col s12">
-            <input id="age" type="number" class="validate">
-            <label for="age">Age</label>
-          </div>
-        </form>
+    </nav>
 
-        <!-- Choose Gender -->
-        <div id="chooseGender">
-          <h6>Your Gender:</h6>
-          <form action="maleFemale">
-              <p>
-                <input name="gender" type="radio" id="male" value="male" />
-                <label for="male">Male</label>
-              </p>
-              <p>
-                <input name="gender" type="radio" id="female" value="female" />
-                <label for="female">Female</label>
-              </p>
+    <!-- main content container -->
+    <div class="container">
+
+      <!-- content is in a single row -->
+      <div class="row">
+
+        <!-- sidebar contains data entry forms -->
+        <div class="sidebar">
+          <form id="userForm">
+            <div class="input-field col s12">
+              <input id="name" type="text" class="validate">
+              <label for="userName" class="active">What is your name? (optional)</label>
+            </div>
           </form>
-        </div>
-
-        <!-- Choose Activity Level -->
-        <h6>How often do you exercise? </h6>
-        <select class="browser-default" id="chooseActivityLevel">
-          <option value="Activity" disabled selected>Activity Level</option>
-          <option value="never">Never</option>
-          <option value="monthly">A few times a month</option>
-          <option value="onceWeekly">Once a Week</option>
-          <option value="weekly">A few times a week</option>
-          <option value="3Weekly">3 or more times a week</option>
-        </select>
-
-        <!-- choose nutrient -->
-        <h6>Please choose your nutrient</h6>
-        <select class="browser-default" id="nutrientSelected">
-          <option value="Nutrients" disabled selected>Nutrients</option>
-          <option value="calcium">Calcium</option>
-          <option value="magnesium">Magnesium</option>
-          <option value="iron">Iron</option>
-          <option value="potassium">Potassium</option>
-          <option value="zinc">Zinc</option>
-          <option value="Vitamin C">Vitamin C</option>
-          <option value="Vitamin B12">Vitamin B12</option>
-          <option value="manganese">Manganese</option>
-          <option value="copper">Copper</option>
-        </select>
-
-        <button id="submit-btn" class="btn waves-effect waves-light" type="submit" name="action">Submit
-        </button>
-      </div>
 
 
-      <div id="explanation">
-        <!-- BLANK STATE -->
-        <div class="blank-state">
-          <img src="assets/images/leaf.svg" alt="">
-          <h4>Let's Get Started</h4>
-          <p>First, fill out the panel on the left and click submit. You will learn more about the nutrient you selected and how much energy you should consume per day. Enjoy the recipie cards!</p>
-        </div>
-        <!-- COPY FOR SELECTED MINERAL -->
-        <div class="mineral-copy" id="mineral-copy">
-          <!-- <h5>Learn More</h5> -->
-        </div>
-      <!-- SUPERFOODS LIST -->
-      <div class="recommended-food-list">
-        <!-- <h5>Superfoods</h5> -->
-        <ul id="superfoods">
-        </ul>
-      </div>
-        <!-- RECIPE CARD -->
-        <div id="recipe-div" style="padding-left: 0;">
+          <div class="col s12">
+   
+             <!-- Choose age range -->
+            <h6>How old are you? (optional)</h6>
+            <select class="browser-default" id="age">
+              <option value="Age" disabled selected>Age</option>
+              <option value=4>2-3 years</option>
+              <option value=9>4-8 years</option>
+              <option value=14>9-13 years</option>
+              <option value=19>14-18 years</option>
+              <option value=31>19-30 years</option>
+              <option value=51>31-50 years</option>
+              <option value=999>51+ years</option>
+            </select>         
+
+            <!-- Choose Gender -->
+            <h6>What is your Gender? (optional)</h6>
+            <select class="browser-default" id="chooseGender">
+              <option value="Gender" disabled selected>Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+
+            <!-- Choose Activity Level -->
+            <h6>How often do you exercise? (optional)</h6>
+            <select class="browser-default" id="chooseActivityLevel">
+              <option value="Activity" disabled selected>Activity Level</option>
+              <option value=0>Never</option>
+              <option value=1>A few times a month</option>
+              <option value=2>Once a Week</option>
+              <option value=3>Twice a week</option>
+              <option value=4>3 or more times a week</option>
+            </select>
+
+            <!-- choose nutrient -->
+            <h6>Please choose your nutrient (required)</h6>
+            <select class="browser-default" id="nutrientSelected">
+              <option value="Nutrients" disabled selected>Nutrients</option>
+              <option value="calcium">Calcium</option>
+              <option value="magnesium">Magnesium</option>
+              <option value="iron">Iron</option>
+              <option value="potassium">Potassium</option>
+              <option value="zinc">Zinc</option>
+              <option value="Vitamin C">Vitamin C</option>
+              <option value="Vitamin B12">Vitamin B12</option>
+              <option value="manganese">Manganese</option>
+              <option value="copper">Copper</option>
+            </select>
+
+          </div> <!-- end of div for drop down menus -->
+
+          <button id="submit-btn" class="btn waves-effect waves-light" type="submit" name="action">Submit
+          </button>
+
+        </div> <!-- end of sidebar div -->
+
+        <!-- explanation div contains all dynamic content -->
+        <div id="explanation">
+          <!-- BLANK STATE -->
+          <div class="blank-state">
+            <img src="assets/images/leaf.svg" alt="">
+            <h4>Let's Get Started</h4>
+            <p>First, fill out the panel on the left and click submit. You will learn more about the nutrient you selected and how much energy you should consume per day. Enjoy the recipe cards!</p>
+          </div>
+          <!-- COPY FOR SELECTED MINERAL -->
+          <div class="mineral-copy" id="mineral-copy">
+          </div>
+
+            <!-- CALORIE LIMIT -->
+            <div class="calorie-limit" id="calorie-limit">
+            </div>
+
+
+          <!-- SUPERFOODS LIST -->
+          <div class="recommended-food-list">
+            <ul id="superfoods">
+            </ul>
+          </div>
+
+          <!-- RECIPE CARD -->
+          <div id="recipe-div" style="padding-left: 0;">
+          </div>
+          
         </div> <!-- END OF EXPLANATION DIV -->
-      </div>
-
-
-    </div>
+    
+      </div> <!-- end of row -->
+    </div> <!-- end of container -->
   </body>
   <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
 </html>
