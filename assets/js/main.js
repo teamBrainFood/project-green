@@ -351,44 +351,46 @@ $( document ).ready(function() {
 
   // retrieve data from Firebase
   return firebase.database().ref().once('value').then(function(snapshot) {
-        databaseName = snapshot.val().name;
-        databaseAge = snapshot.val().age;
-        databaseGender = snapshot.val().gender;
-        databaseActivityLevel = snapshot.val().activityLevel;
-        databaseNutrient = snapshot.val().nutrient;
-        databaseFood = snapshot.val().selectedFood;
+        
 
-        // if firebase data is not the default data, update variables and input form
-        if (databaseName !== "Name") {
-            name = databaseName;
-            $("#name").val(databaseName);
-        };
+          databaseName = snapshot.val().name;
+          databaseAge = snapshot.val().age;
+          databaseGender = snapshot.val().gender;
+          databaseActivityLevel = snapshot.val().activityLevel;
+          databaseNutrient = snapshot.val().nutrient;
+          databaseFood = snapshot.val().selectedFood;
 
-        if (databaseAge !== "Age") {
-            age = databaseAge;
-            $("#age").val(databaseAge);
-        };
+          // if firebase data is not the default data, update variables and input form
+          if (databaseName !== "Name") {
+              name = databaseName;
+              $("#name").val(databaseName);
+          };
 
-        if (databaseGender !== "Gender") {
-            gender = databaseGender;
-            $("#chooseGender").val(databaseGender);
-        };
+          if (databaseAge !== "Age") {
+              age = databaseAge;
+              $("#age").val(databaseAge);
+          };
 
-        if (databaseAge !== "Activity") {
-            activityLevel = databaseActivityLevel
-            $("#chooseActivityLevel").val(databaseActivityLevel);
-        };
+          if (databaseGender !== "Gender") {
+              gender = databaseGender;
+              $("#chooseGender").val(databaseGender);
+          };
 
-        if (databaseNutrient !== "Nutrients") {
-            nutrient = databaseNutrient;
-            $("#nutrientSelected").val(databaseNutrient);
-            userSubmit();
-        };
+          if (databaseAge !== "Activity") {
+              activityLevel = databaseActivityLevel
+              $("#chooseActivityLevel").val(databaseActivityLevel);
+          };
 
-        if (databaseFood !== "selectedFood") {
-            selectedFood = databaseFood;
-            showRecipes(databaseFood);
-        };
+          if (databaseNutrient !== "Nutrients") {
+              nutrient = databaseNutrient;
+              $("#nutrientSelected").val(databaseNutrient);
+              userSubmit();
+          };
+
+          if (databaseFood !== "selectedFood") {
+              selectedFood = databaseFood;
+              showRecipes(databaseFood);
+          };
 
   }); // end of firebase data retrieval
 
