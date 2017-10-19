@@ -13,7 +13,7 @@ $( document ).ready(function() {
   firebase.initializeApp(config);
 
 
-  
+
 
   // Variables ===================================================================
 
@@ -349,7 +349,7 @@ $( document ).ready(function() {
 
   // Below occurs when page is first loaded =========================================
 
-  // Get info from Firebase
+  // retrieve data from Firebase
   return firebase.database().ref().once('value').then(function(snapshot) {
         databaseName = snapshot.val().name;
         databaseAge = snapshot.val().age;
@@ -358,36 +358,38 @@ $( document ).ready(function() {
         databaseNutrient = snapshot.val().nutrient;
         databaseFood = snapshot.val().selectedFood;
 
+        // if firebase data is not the default data, update variables and input form
         if (databaseName !== "Name") {
+            name = databaseName;
             $("#name").val(databaseName);
         };
 
         if (databaseAge !== "Age") {
+            age = databaseAge;
             $("#age").val(databaseAge);
         };
 
         if (databaseGender !== "Gender") {
+            gender = databaseGender;
             $("#chooseGender").val(databaseGender);
         };
 
         if (databaseAge !== "Activity") {
+            activityLevel = databaseActivityLevel
             $("#chooseActivityLevel").val(databaseActivityLevel);
         };
 
         if (databaseNutrient !== "Nutrients") {
+            nutrient = databaseNutrient;
             $("#nutrientSelected").val(databaseNutrient);
             userSubmit();
         };
 
-        if (databaseFood !== "SelectedFood") {
+        if (databaseFood !== "selectedFood") {
+            selectedFood = databaseFood;
             showRecipes(databaseFood);
         };
 
-        console.log("name " + databaseName);
-        console.log("age " + databaseAge);
-        console.log("gender " + databaseGender);
-        console.log("activityLevel " + databaseActivityLevel);
-        console.log("nutrient " + databaseNutrient);
-  });
+  }); // end of firebase data retrieval
 
 }); // end of document.ready
