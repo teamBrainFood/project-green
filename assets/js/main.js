@@ -1,6 +1,6 @@
 $( document ).ready(function() {
 
-  // Initialize Firebase
+  // Initialize Firebase ========================================================
   var config = {
     apiKey: "AIzaSyC_JrNTPoPd0yT8XdPkM-TfRRaHRlkxXAQ",
     authDomain: "brain-food-6703e.firebaseapp.com",
@@ -11,6 +11,11 @@ $( document ).ready(function() {
   };
 
   firebase.initializeApp(config);
+
+
+  
+
+  // Variables ===================================================================
 
   // Below is our variable to reference the firebase database
   var database = firebase.database();
@@ -99,20 +104,24 @@ $( document ).ready(function() {
 };
 
   // all other variables
-  var name = '';
-  var age = '';
-  var gender = '';
-  var activityLevel = '';
-  var nutrient = '';
+  var name = 'Name';
+  var age = 'Age';
+  var gender = 'Gender';
+  var activityLevel = '0';
+  var nutrient = 'Nutrients';
+  var selectedFood = 'SelectedFood';
 
   var foodResponse = '';    // used to store ajax response from nutrition database
   var recipeResponse = '';  // used to store ajax response from recipe database
 
-  //Below is our onClick function when we click "Submit"
-  $("#submit-btn").on("click", function() {
 
-    // Below prevents default functionality on clicking submit button
-    event.preventDefault();
+
+
+
+  // Functions =======================================================================
+
+  // Below is the function that is called when the Submit button is clicked
+  function userSubmit() {
 
     // get values from user input form
     name = $("#name").val().trim();
@@ -120,7 +129,6 @@ $( document ).ready(function() {
     gender = $('#chooseGender').find(":selected").val();
     activityLevel = $('#chooseActivityLevel').find(":selected").val();
     nutrient = $('#nutrientSelected').find(":selected").val();
-
 
     console.log("name " + name);
     console.log("age " + age);
@@ -134,7 +142,8 @@ $( document ).ready(function() {
         age: age,
         gender: gender,
         activityLevel: activityLevel,
-        nutrient: nutrient
+        nutrient: nutrient,
+        selectedFood: selectedFood
     };
 
     //Below code is how we push inputs to firebase when we click submit
@@ -152,7 +161,6 @@ $( document ).ready(function() {
     $('.mineral-copy').html("<h5>" + nutrient + "</h5>")
     $('.recommended-food-list').html("<h5>Superfoods</h5>")
     $('#recipe-div').html("<h5>Recipes</h5>")
-
 
     // Below is how we populate the "Learn More" section with the corresponding nutrient info
     var copy = nutrients[nutrient].description;
@@ -241,20 +249,41 @@ $( document ).ready(function() {
         $('#calorie-limit').append("<p>" + calorieLimit + " Calories</p>");
       }
 
-  }); // end of submit button click
+  }; // end of userSubmit function
 
-  //Below is our onClick function when we click a food button
-  $(document.body).on("click", ".food-button", function() {
+  //Below is our onClick function when we click "Submit"
+  $("#submit-btn").on("click", function() {
 
+    // Below prevents default functionality on clicking submit button
+    event.preventDefault();
+
+    // Get the nutrient value, which is a required input
+    nutrient = $('#nutrientSelected').find(":selected").val();
+
+    // if the nutrient is still the default value, display a message
+    if (nutrient == "Nutrients") {
+      
+      $(".blank-state").empty();
+      $(".blank-state").html("<p>Please select a nutrient and click the Submit button</p>");
+    }
+
+    else {
+      // call the userSubmit function
+      userSubmit();
+    };
+
+  }); // end of submit button onClick function
+
+  // Below is the function to get recipes when a food button is clicked
+  function showRecipes(searchTerm) { 
+
+    // clear the recipe div and add a title
     $('#recipe-div').empty();
     $('#recipe-div').html("<h5>Recipes</h5>")
 
-    var selectedFood = $(this).attr("data-food");
-
-    console.log("selectedFood " + selectedFood);
 
     //Below is the ajax query to the database to retrieve recipes
-    var ingredientURL = "https://api.edamam.com/search?" + "&q=" + selectedFood;
+    var ingredientURL = "https://api.edamam.com/search?" + "&q=" + searchTerm;
 
     $.ajax({
         url: ingredientURL,
@@ -289,6 +318,76 @@ $( document ).ready(function() {
 
     }); // end of recipe ajax function
 
-  }); // end of food button click
+  }; // end of showRecipes function
+
+  //Below is our onClick function when we click a food button
+  $(document.body).on("click", ".food-button", function() {
+    
+    var selectedFood = $(this).attr("data-food");
+
+    console.log("selectedFood " + selectedFood);
+
+    var userInputs = {
+        name: name,
+        age: age,
+        gender: gender,
+        activityLevel: activityLevel,
+        nutrient: nutrient,
+        selectedFood: selectedFood
+    };
+
+    // update firebase
+    database.ref().set(userInputs);
+
+    // call the showRecipes function
+    showRecipes(selectedFood);
+
+  }); // end of food button onClick function
+
+
+
+
+  // Below occurs when page is first loaded =========================================
+
+  // Get info from Firebase
+  return firebase.database().ref().once('value').then(function(snapshot) {
+        databaseName = snapshot.val().name;
+        databaseAge = snapshot.val().age;
+        databaseGender = snapshot.val().gender;
+        databaseActivityLevel = snapshot.val().activityLevel;
+        databaseNutrient = snapshot.val().nutrient;
+        databaseFood = snapshot.val().selectedFood;
+
+        if (databaseName !== "Name") {
+            $("#name").val(databaseName);
+        };
+
+        if (databaseAge !== "Age") {
+            $("#age").val(databaseAge);
+        };
+
+        if (databaseGender !== "Gender") {
+            $("#chooseGender").val(databaseGender);
+        };
+
+        if (databaseAge !== "Activity") {
+            $("#chooseActivityLevel").val(databaseActivityLevel);
+        };
+
+        if (databaseNutrient !== "Nutrients") {
+            $("#nutrientSelected").val(databaseNutrient);
+            userSubmit();
+        };
+
+        if (databaseFood !== "SelectedFood") {
+            showRecipes(databaseFood);
+        };
+
+        console.log("name " + databaseName);
+        console.log("age " + databaseAge);
+        console.log("gender " + databaseGender);
+        console.log("activityLevel " + databaseActivityLevel);
+        console.log("nutrient " + databaseNutrient);
+  });
 
 }); // end of document.ready
