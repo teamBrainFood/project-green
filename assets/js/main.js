@@ -103,7 +103,7 @@ $( document ).ready(function() {
   };
 
   // all other variables
-  var name = 'Name';                  // user name
+  var name = '';                  // user name
   var age = 'Age';                    // user age
   var gender = 'Gender';              // user gender
   var activityLevel = 'Activity';     // user activity level
@@ -120,10 +120,7 @@ $( document ).ready(function() {
   // functions =======================================================================
 
   // function to send information to firebase
-
   function setFirebase() {
-
-    console.log(selectedFood);
 
     var userInputs = {
         name: name,
@@ -137,7 +134,7 @@ $( document ).ready(function() {
     // update firebase
     database.ref().set(userInputs);
 
-  };
+  }; // end of setFirebase function
 
   // function that is called when the submit button is clicked
   function userSubmit() {
@@ -158,12 +155,16 @@ $( document ).ready(function() {
     $('.recipe-div').empty();
 
     // add in headers
-    $('.mineral-copy').html("<h5>" + nutrient + "</h5>")
-    $('.recommended-food-list').html("<h5>Superfoods</h5>")
-    $('.recipe-div').html("<h5>Recipes</h5>")
+    $('.mineral-copy').html("<h5>" + nutrient + "</h5>");
+    $('.recommended-food-list').html("<h5>Superfoods</h5>");
+    $('.recipe-div').html("<h5>Recipes</h5>");
+
+    // add message to recipes div
+    $('.recipe-div').append("<p>Click on a superfood above to see recipes.</p>");    
 
     // populate the mineral-copy section with the corresponding nutrient info
     var copy = nutrients[nutrient].description;
+
     $(".mineral-copy").append("<p>" + copy + "</p>");
 
 
@@ -171,7 +172,7 @@ $( document ).ready(function() {
     var nutrientNumber = nutrients[nutrient].code;
 
 
-    // ajax query to retrieve 25 foods, max = 25 in url string
+    // ajax query to retrieve 25 foods
     $.ajax({
       type: "GET",
       url: "https://api.nal.usda.gov/ndb/nutrients/?api_key=u7cln9dkHVsbUoFLOUKnvEElzjOP58u0CNHWs0SP&max=25&fg=1100&sort=c&nutrients=" + nutrientNumber
@@ -203,9 +204,10 @@ $( document ).ready(function() {
 
       }; // end of adding foods to array
 
-      var numberButtons = 10; // specifies the maximum number of buttons to create
+      // create food buttons
 
-      // create buttons
+      // specify the maximum number of buttons to create
+      var numberButtons = 10;
 
       // reduce the number of buttons to the number of foods in the array if necessary  
       if (foodArray.length < numberButtons) {
@@ -235,7 +237,7 @@ $( document ).ready(function() {
     // if age, gender or activity level information is not provided
     if (age === "Age" || gender === "Gender" || activityLevel === "Activity") {
 
-      // empty the div showing calorie requirements
+      // display a message
       $('.calorie-limit').empty();
       $('.calorie-limit').append("<h5>Recommended Calorie Limit</h5>");
       $('.calorie-limit').append("<p>If you would like to see calorie recommendations, please provide your age, gender and activity level.</p>");
@@ -255,7 +257,7 @@ $( document ).ready(function() {
   //Below is our onClick function when we click "Submit"
   $("#submit-btn").on("click", function() {
 
-    // Below prevents default functionality on clicking submit button
+    // prevent default functionality on clicking button
     event.preventDefault();
 
     // Get the nutrient value, which is a required input
@@ -269,7 +271,7 @@ $( document ).ready(function() {
     }
 
     else {
-      // call the userSubmit function
+      // call the userSubmit function above
       userSubmit();
 
       // update firebase with user input values
@@ -324,28 +326,25 @@ $( document ).ready(function() {
   //Below is our onClick function when we click a food button
   $(document.body).on("click", ".food-button", function() {
     
-    var selectedFood = $(this).attr("data-food");
+    selectedFood = $(this).attr("data-food");
 
     // update firebase with new selection
     setFirebase();
 
-    // call the showRecipes function
+    // call the showRecipes function above
     showRecipes(selectedFood);
 
   }); // end of food button onClick function
 
-  //Below is our onClick function when we click the clear button  
+
+  // Below is our onClick function when we click the clear button  
   $(document.body).on("click", "#clear-btn", function() {
-         
-    // reset the values on the form
-    $("#name").val("");
-    $("#age").val("Age");
-    $("#chooseGender").val("Gender");
-    $("#chooseActivityLevel").val("Activity");
-    $("#nutrientSelected").val("Nutrients");
+    
+    // prevent default functionality on clicking the clear button
+    event.preventDefault();
 
     // reset variables
-    name = 'Name';                  // user name
+    name = '';                  // user name
     age = 'Age';                    // user age
     gender = 'Gender';              // user gender
     activityLevel = 'Activity';     // user activity level
@@ -377,8 +376,8 @@ $( document ).ready(function() {
           databaseNutrient = snapshot.val().nutrient;
           databaseFood = snapshot.val().selectedFood;
 
-          // if firebase data is not the default data, update variables and input form
-          if (databaseName !== "Name") {
+          // if firebase data is not the default data, update variables, input form and content
+          if (databaseName !== "") {
               name = databaseName;
               $("#name").val(databaseName);
           };
@@ -401,12 +400,12 @@ $( document ).ready(function() {
           if (databaseNutrient !== "Nutrients") {
               nutrient = databaseNutrient;
               $("#nutrientSelected").val(databaseNutrient);
-              userSubmit();
+              userSubmit(); // runs userSubmit function as if user had clicked the submit button
           };
 
           if (databaseFood !== "selectedFood") {
               selectedFood = databaseFood;
-              showRecipes(selectedFood);
+              showRecipes(selectedFood); // retrieves recipes for selected food
           };
 
   }); // end of firebase data retrieval
