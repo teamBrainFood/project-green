@@ -38,89 +38,90 @@
       <!-- content is in a single row -->
       <div class="row">
 
-        <!-- sidebar contains data entry forms -->
+        <!-- sidebar contains user input form -->
         <div class="sidebar">
-          <form id="userForm">
-            <div class="input-field col s12">
+
+            <form id="userForm">
+
+              <!-- Enter name -->
+              <label for="userName">What is your name? (optional)</label>
               <input id="name" type="text" class="validate" placeholder="Name">
-              <label for="userName" class="active">What is your name? (optional)</label>
-            </div>
-          </form>
+  
+              <!-- Choose age range -->
+              <h6>How old are you? (optional)</h6>
+              <select class="browser-default" id="age">
+                <option value="Age" disabled selected>Age</option>
+                <option value=4>2-3 years</option>
+                <option value=9>4-8 years</option>
+                <option value=14>9-13 years</option>
+                <option value=19>14-18 years</option>
+                <option value=31>19-30 years</option>
+                <option value=51>31-50 years</option>
+                <option value=999>51+ years</option>
+              </select>         
 
+              <!-- Choose Gender -->
+              <h6>What is your Gender? (optional)</h6>
+              <select class="browser-default" id="chooseGender">
+                <option value="Gender" disabled selected>Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
 
-          <div class="col s12">
-   
-             <!-- Choose age range -->
-            <h6>How old are you? (optional)</h6>
-            <select class="browser-default" id="age">
-              <option value="Age" disabled selected>Age</option>
-              <option value=4>2-3 years</option>
-              <option value=9>4-8 years</option>
-              <option value=14>9-13 years</option>
-              <option value=19>14-18 years</option>
-              <option value=31>19-30 years</option>
-              <option value=51>31-50 years</option>
-              <option value=999>51+ years</option>
-            </select>         
+              <!-- Choose Activity Level -->
+              <h6>How often do you exercise? (optional)</h6>
+              <select class="browser-default" id="chooseActivityLevel">
+                <option value="Activity" disabled selected>Activity Level</option>
+                <option value=0>Never</option>
+                <option value=1>A few times a month</option>
+                <option value=2>Once a Week</option>
+                <option value=3>Twice a week</option>
+                <option value=4>3 or more times a week</option>
+              </select>
 
-            <!-- Choose Gender -->
-            <h6>What is your Gender? (optional)</h6>
-            <select class="browser-default" id="chooseGender">
-              <option value="Gender" disabled selected>Gender</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-            </select>
+              <!-- choose nutrient -->
+              <h6>Please choose your nutrient (required)</h6>
+              <select class="browser-default" id="nutrientSelected">
+                <option value="Nutrients" disabled selected>Nutrients</option>
+                <option value="Calcium">Calcium</option>
+                <option value="Copper">Copper</option>
+                <option value="Iron">Iron</option>
+                <option value="Magnesium">Magnesium</option>
+                <option value="Manganese">Manganese</option>
+                <option value="Phosphorus">Phosphorus</option>
+                <option value="Potassium">Potassium</option>
+                <option value="Selenium">Selenium</option>
+                <option value="Vitamin B12">Vitamin B12</option>
+                <option value="Vitamin C">Vitamin C</option>
+                <option value="Zinc">Zinc</option>
+              </select>
 
-            <!-- Choose Activity Level -->
-            <h6>How often do you exercise? (optional)</h6>
-            <select class="browser-default" id="chooseActivityLevel">
-              <option value="Activity" disabled selected>Activity Level</option>
-              <option value=0>Never</option>
-              <option value=1>A few times a month</option>
-              <option value=2>Once a Week</option>
-              <option value=3>Twice a week</option>
-              <option value=4>3 or more times a week</option>
-            </select>
+            </form>
 
-            <!-- choose nutrient -->
-            <h6>Please choose your nutrient (required)</h6>
-            <select class="browser-default" id="nutrientSelected">
-              <option value="Nutrients" disabled selected>Nutrients</option>
-              <option value="calcium">Calcium</option>
-              <option value="magnesium">Magnesium</option>
-              <option value="iron">Iron</option>
-              <option value="potassium">Potassium</option>
-              <option value="zinc">Zinc</option>
-              <option value="Vitamin C">Vitamin C</option>
-              <option value="Vitamin B12">Vitamin B12</option>
-              <option value="manganese">Manganese</option>
-              <option value="copper">Copper</option>
-              <option value="phosphorus">Phosphorus</option>
-              <option value="selenium">Selenium</option>
-            </select>
-
-          </div> <!-- end of div for drop down menus -->
-
-          <button id="submit-btn" class="btn waves-effect waves-light" type="submit" name="action">Submit
+          <button id="submit-btn" class="btn waves-effect waves-light" type="submit" name="submit">Submit
           </button>
+
+          <button id="clear-btn" class="btn waves-effect waves-light" type="submit" name="clear">Clear</button>
 
         </div> <!-- end of sidebar div -->
 
         <!-- explanation div contains all dynamic content -->
         <div id="explanation">
+
           <!-- BLANK STATE -->
           <div class="blank-state">
             <img src="assets/images/leaf.svg" alt="">
             <h4>Let's Get Started</h4>
             <p>First, fill out the panel on the left and click submit. You will learn more about the nutrient you selected and how much energy you should consume per day. Enjoy the recipe cards!</p>
           </div>
+
           <!-- COPY FOR SELECTED MINERAL -->
-          <div class="mineral-copy" id="mineral-copy">
+          <div class="mineral-copy">
           </div>
 
-            <!-- CALORIE LIMIT -->
-            <div class="calorie-limit" id="calorie-limit">
-            </div>
+          <!-- CALORIE LIMIT -->
+          <div class="calorie-limit">
+          </div>
 
 
           <!-- SUPERFOODS LIST -->
@@ -130,13 +131,17 @@
           </div>
 
           <!-- RECIPE CARD -->
-          <div id="recipe-div" style="padding-left: 0;">
+          <div class="recipe-div" style="padding-left: 0;">
           </div>
           
-        </div> <!-- END OF EXPLANATION DIV -->
+        </div> <!-- end of explanation div -->
     
       </div> <!-- end of row -->
+
     </div> <!-- end of container -->
+
   </body>
+
   <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+
 </html>
