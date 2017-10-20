@@ -11,6 +11,8 @@ Function:
 
 User fills out a form on the main page providing their name, age, gender, activity level, and the mineral or vitamin they are interested in. Aside from the name and age the options are listed in a drop down menu form to provide a more pleasant UI experience.
 
+App can work without the user inputing name, age, gender and activity level. It will maintain all functionality aside from calorie count
+
 Those details are then stored to firebase to allow for easier access in future to previous sessions, requests, and searches.
 
 Once data is provided the app makes a call to the USDA API to pull the top ten vegetable sources based on that particular mineral or vitamin content. 
@@ -25,4 +27,5 @@ When a user chooses a recipe from the page the browser then opens a new window t
 Future Opportunities 
 
 In the next iteration we would have a function to store favorite recipes, and previous searches. There is a great opportunity to place another API call to a grocery retailer to begin a shopping list.
+Oppertunity to add a search for vegetables you do not recognize.
 
