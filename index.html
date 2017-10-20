@@ -86,23 +86,25 @@
             <h6>Please choose your nutrient (required)</h6>
             <select class="browser-default" id="nutrientSelected">
               <option value="Nutrients" disabled selected>Nutrients</option>
-              <option value="calcium">Calcium</option>
-              <option value="magnesium">Magnesium</option>
-              <option value="iron">Iron</option>
-              <option value="potassium">Potassium</option>
-              <option value="zinc">Zinc</option>
-              <option value="Vitamin C">Vitamin C</option>
+              <option value="Calcium">Calcium</option>
+              <option value="Copper">Copper</option>
+              <option value="Iron">Iron</option>
+              <option value="Magnesium">Magnesium</option>
+              <option value="Manganese">Manganese</option>
+              <option value="Phosphorus">Phosphorus</option>
+              <option value="Potassium">Potassium</option>
+              <option value="Selenium">Selenium</option>
               <option value="Vitamin B12">Vitamin B12</option>
-              <option value="manganese">Manganese</option>
-              <option value="copper">Copper</option>
-              <option value="phosphorus">Phosphorus</option>
-              <option value="selenium">Selenium</option>
+              <option value="Vitamin C">Vitamin C</option>
+              <option value="Zinc">Zinc</option>
             </select>
 
           </div> <!-- end of div for drop down menus -->
 
-          <button id="submit-btn" class="btn waves-effect waves-light" type="submit" name="action">Submit
+          <button id="submit-btn" class="btn waves-effect waves-light" type="submit" name="submit">Submit
           </button>
+
+          <button id="clear-btn" class="btn waves-effect waves-light" type="submit" name="clear">Clear</button>
 
         </div> <!-- end of sidebar div -->
 
@@ -114,13 +116,14 @@
             <h4>Let's Get Started</h4>
             <p>First, fill out the panel on the left and click submit. You will learn more about the nutrient you selected and how much energy you should consume per day. Enjoy the recipe cards!</p>
           </div>
+          
           <!-- COPY FOR SELECTED MINERAL -->
-          <div class="mineral-copy" id="mineral-copy">
+          <div class="mineral-copy">
           </div>
 
-            <!-- CALORIE LIMIT -->
-            <div class="calorie-limit" id="calorie-limit">
-            </div>
+          <!-- CALORIE LIMIT -->
+          <div class="calorie-limit">
+          </div>
 
 
           <!-- SUPERFOODS LIST -->

@@ -15,10 +15,6 @@
 	width: 100%;
 }
 
-.food-button {
-	margin: 5px;
-}
-
 /* TYPOGRAPHY */
 h1, h2, h3, h4, h6, a, li, label, span {
   font-family: 'Montserrat', sans-serif;
@@ -92,7 +88,7 @@ label.active::after {
 
 }
 
-#submit-btn {
+#submit-btn, #clear-btn {
   background-color: #50c878 !important; /* Emrald Green */
   border-radius: 50px;
   font-weight: bold;
@@ -101,9 +97,10 @@ label.active::after {
   padding: 12px 30px;
   margin-top: 40px;
   margin-bottom: 200px;
+  margin-right: 10px;
 }
 
-#submit-btn:hover {
+#submit-btn:hover, #clear-btn:hover {
   background-color: #4B4B4B !important;
 }
 
@@ -140,7 +137,7 @@ label.active::after {
   border-bottom: 3px solid #EDEDED;
   font-size: 24px;
   display: inline-block;
-  margin: 0 7px 5px 0;
+  margin: 0 20px 5px 0;
   ext-transform: capitalize;
 }
 
