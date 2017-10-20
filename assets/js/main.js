@@ -155,12 +155,12 @@ $( document ).ready(function() {
     // empty the content divs
     $('.mineral-copy').empty();
     $('.recommended-food-list').empty();
-    $('#recipe-div').empty();
+    $('.recipe-div').empty();
 
     // add in headers
     $('.mineral-copy').html("<h5>" + nutrient + "</h5>")
     $('.recommended-food-list').html("<h5>Superfoods</h5>")
-    $('#recipe-div').html("<h5>Recipes</h5>")
+    $('.recipe-div').html("<h5>Recipes</h5>")
 
     // populate the mineral-copy section with the corresponding nutrient info
     var copy = nutrients[nutrient].description;
@@ -282,8 +282,8 @@ $( document ).ready(function() {
   function showRecipes(searchTerm) { 
 
     // clear the recipe div and add a title
-    $('#recipe-div').empty();
-    $('#recipe-div').html("<h5>Recipes</h5>")
+    $('.recipe-div').empty();
+    $('.recipe-div').html("<h5>Recipes</h5>")
 
 
     //Below is the ajax query to the database to retrieve recipes
@@ -299,7 +299,7 @@ $( document ).ready(function() {
 
       // if there are no recipes, display a message
       if (recipeResponse.length == 0) {
-        $('#recipe-div').append("<p>Sorry, there are no recipes available with that ingredient.</p><p>Please try another ingredient.</p>")
+        $('.recipe-div').append("<p>Sorry, there are no recipes available with that ingredient.</p><p>Please try another ingredient.</p>")
       };
   
       // create a recipe card for each recipe in the response
@@ -314,7 +314,7 @@ $( document ).ready(function() {
         var recipeCard = $('<div>');
           recipeCard.addClass("recipes");
           recipeCard.html('<div class="card"><div class="card-image"><img src="' + recipeImage + '"><span class="card-title">' + recipeLabel + '</span></div><div class="card-action"><a id="recipe-url" href="' + recipeURL + '" target="_blank">View Recipe</a></div></div>');
-          $('#recipe-div').append(recipeCard);
+          $('.recipe-div').append(recipeCard);
       }
 
     }); // end of recipe ajax function

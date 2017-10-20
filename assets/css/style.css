@@ -4,17 +4,6 @@
   max-width: none;
 }
 
-.foodPhoto{
-	max-height: 200px;
-}
-.chart{
-	margin-left: 20px;
-	padding-left: 20px;
-}
-.chartStandIn{
-	width: 100%;
-}
-
 /* TYPOGRAPHY */
 h1, h2, h3, h4, h6, a, li, label, span {
   font-family: 'Montserrat', sans-serif;
@@ -31,7 +20,7 @@ h1, h2, h3, h4, h6, a, li, label, span {
   color: #4B4B4B;
   font-weight: 700;
   text-transform: uppercase;
-  color: #50c878; /* Emrald Green */
+  color: #50c878; /* Emerald Green */
 }
 
 h6 {
@@ -45,7 +34,7 @@ p {
 
 /* NAV STYLES */
 nav {
-  background-color: #50c878; /* Emrald Green */
+  background-color: #50c878; /* Emerald Green */
   position: fixed;
   z-index: 10000000;
 }
@@ -67,29 +56,28 @@ nav {
 }
 
 .active {
-  color: #50c878 !important; /* Emrald Green */
+  color: #50c878 !important; /* Emerald Green */
 }
 
 .validate {
-  border-bottom: 3px solid #50c878 !important; /* Emrald Green */
+  border-bottom: 3px solid #50c878 !important; /* Emerald Green */
 }
 
 label {
-  margin-left: -10px;
+  font-size: 1rem;
+}
+
+label.active {
+  color: #4B4B4B !important;
 }
 
 label:after {
-  background-color: #50c878 !important; /* Emrald Green */
-  border: 3px solid #50c878 !important; /* Emrald Green */
-}
-
-label.active::after {
-  opacity: 0 !important;
-
+  background-color: #50c878 !important; /* Emerald Green */
+  border: 3px solid #50c878 !important; /* Emerald Green */
 }
 
 #submit-btn, #clear-btn {
-  background-color: #50c878 !important; /* Emrald Green */
+  background-color: #50c878 !important; /* Emerald Green */
   border-radius: 50px;
   font-weight: bold;
   line-height: inherit;
@@ -103,10 +91,6 @@ label.active::after {
 #submit-btn:hover, #clear-btn:hover {
   background-color: #4B4B4B !important;
 }
-
-/*#chooseGender {
-  margin-top: 180px;
-}*/
 
 .input-field {
   padding-left: 0 !important;
@@ -122,10 +106,9 @@ label.active::after {
 .mineral-copy p {
   max-width: 700px;
   max-height: 140px;
-  overflow: scroll;
+  overflow: auto;
+  margin-bottom: 40px;
 }
-
-
 
 /* SUPERFOODS LIST */
 .recommended-food-list {
@@ -150,11 +133,11 @@ label.active::after {
 
 /* RECIPES */
 .card-action a {
-  color: #50c878 !important; /* Emrald Green */
+  color: #50c878 !important; /* Emerald Green */
 }
 
 .card-action a:hover {
-  color: #4B4B4B !important; /* Emrald Green */
+  color: #4B4B4B !important; /* Emerald Green */
   transition: all .5s ease-out;
 }
 
@@ -168,6 +151,7 @@ label.active::after {
 .card-image img {
   height: 200px;
 }
+
 
 /* BLANK STATE STYLES */
 .blank-state {
@@ -191,6 +175,3 @@ label.active::after {
 .blank-state p {
   color: #9e9e9e;
 }
-
-
-/*Just to show UI state*/
