@@ -1,6 +1,6 @@
 $( document ).ready(function() {
 
-  // Initialize Firebase
+  // Initialize Firebase ========================================================
   var config = {
     apiKey: "AIzaSyC_JrNTPoPd0yT8XdPkM-TfRRaHRlkxXAQ",
     authDomain: "brain-food-6703e.firebaseapp.com",
@@ -11,6 +11,11 @@ $( document ).ready(function() {
   };
 
   firebase.initializeApp(config);
+
+
+
+
+  // Variables ===================================================================
 
   // Below is our variable to reference the firebase database
   var database = firebase.database();
@@ -54,6 +59,14 @@ $( document ).ready(function() {
     "manganese": {
       code: "315",
       description: "Manganese is a trace mineral that is present in the human body in very small amounts, primarily in the bones, liver, kidneys and pancreas, according to the University of Maryland Medical School. It is important in the formation of bones, connective tissues, blood-clotting factors and sex hormones, and also is involved in fat and carbohydrate metabolism, calcium absorption and blood sugar regulation. In addition, it is important for brain and nerve function. Manganese may be helpful in treating osteoporosis, arthritis, premenstrual syndrome, diabetes and epilepsy."
+  },
+    "phosphorus": {
+      code: "305",
+      description: "Next to calcium, phosphorus is the most abundant mineral in the body. These 2 important nutrients work closely together to build strong bones and teeth. About 85% of the body's phosphorus is in bones and teeth. Phosphorous is also present in smaller amounts in cells and tissues throughout the body. Phosphorus helps filter out waste in the kidneys and plays an essential role in how the body stores and uses energy. It also helps reduce muscle pain after a workout. Phosphorus is needed for the growth, maintenance, and repair of all tissues and cells, and for the production of the genetic building blocks, DNA and RNA. Phosphorus is also needed to help balance and use other vitamins and minerals, including vitamin D, iodine, magnesium, and zinc."
+  },
+    "selenium": {
+      code: "317",
+      description: "Selenium is used for diseases of the heart and blood vessels, including stroke and “hardening of the arteries” (atherosclerosis). It is also used for preventing various cancers including cancer of the prostate, stomach, lung, and skin. Some people use selenium for under-active thyroid, osteoarthritis, rheumatoid arthritis (RA), an eye disease called macular degeneration, hay fever, infertility, cataracts, gray hair, abnormal pap smears, chronic fatigue syndrome (CFS), mood disorders, arsenic poisoning, and preventing miscarriage. Selenium is also used for preventing serious complications and death from critical illnesses such as head injury and burns. It is also used for preventing bird flu, treating HIV/AIDS, and reducing side effects from cancerchemotherapy."
   }};
 
 
@@ -91,27 +104,31 @@ $( document ).ready(function() {
 };
 
   // all other variables
-  var name = '';
-  var age = '';
-  var gender = '';
-  var activityLevel = '';
-  var nutrient = '';
+  var name = 'Name';
+  var age = 'Age';
+  var gender = 'Gender';
+  var activityLevel = '0';
+  var nutrient = 'Nutrients';
+  var selectedFood = 'SelectedFood';
 
   var foodResponse = '';    // used to store ajax response from nutrition database
   var recipeResponse = '';  // used to store ajax response from recipe database
 
-  //Below is our onClick function when we click "Submit"
-  $("#submit-btn").on("click", function() {
 
-    // Below prevents default functionality on clicking submit button
-    event.preventDefault();
 
+
+
+  // Functions =======================================================================
+
+  // Below is the function that is called when the Submit button is clicked
+  function userSubmit() {
+
+    // get values from user input form
     name = $("#name").val().trim();
     age = $('#age').find(":selected").val();
     gender = $('#chooseGender').find(":selected").val();
     activityLevel = $('#chooseActivityLevel').find(":selected").val();
     nutrient = $('#nutrientSelected').find(":selected").val();
-
 
     console.log("name " + name);
     console.log("age " + age);
@@ -125,16 +142,17 @@ $( document ).ready(function() {
         age: age,
         gender: gender,
         activityLevel: activityLevel,
-        nutrient: nutrient
+        nutrient: nutrient,
+        selectedFood: selectedFood
     };
 
     //Below code is how we push inputs to firebase when we click submit
     database.ref().set(userInputs);
 
-    //Below code is how we remove the blank UI state when the user pushes submit, so we can populate it with nutrient data
+    //Below code is how we remove the blank UI state when the user pushes submit
     $(".blank-state").remove();
 
-    // Adding in Headers
+    // Empty the content divs
     $('.mineral-copy').empty();
     $('.recommended-food-list').empty();
     $('#recipe-div').empty();
@@ -143,7 +161,6 @@ $( document ).ready(function() {
     $('.mineral-copy').html("<h5>" + nutrient + "</h5>")
     $('.recommended-food-list').html("<h5>Superfoods</h5>")
     $('#recipe-div').html("<h5>Recipes</h5>")
-
 
     // Below is how we populate the "Learn More" section with the corresponding nutrient info
     var copy = nutrients[nutrient].description;
@@ -216,36 +233,57 @@ $( document ).ready(function() {
     // Below is the calorie calculation
     var calorieLimit = 2000;
 
-    // if age, gender or activity level information is not provided
-     if (age === "Age" || gender === "Gender" || activityLevel === "Activity") {
-    
-       // empty the div showing calorie requriements 
-       $('#calorie-limit').empty();
-     }
+      // if age, gender or activity level information is not provided
+      if (age === "Age" || gender === "Gender" || activityLevel === "Activity") {
 
-     else {
+        // empty the div showing calorie requriements
+        $('#calorie-limit').empty();
+      }
 
-    // get the calorie limit from the calories object and display it
-       calorieLimit = calories[age][gender][activityLevel];
-       $('#calorie-limit').empty();
-       $('#calorie-limit').append("<h5>Recommended Calorie Limit</h5>");
-       $('#calorie-limit').append("<p>" + calorieLimit + " Calories</p>");
-     }
+      else {
 
-  }); // end of submit button click
+        // get the calorie limit from the calories object and display it
+        calorieLimit = calories[age][gender][activityLevel];
+        $('#calorie-limit').empty();
+        $('#calorie-limit').append("<h5>Recommended Calorie Limit</h5>");
+        $('#calorie-limit').append("<p>" + calorieLimit + " Calories</p>");
+      }
 
-  //Below is our onClick function when we click a food button
-  $(document.body).on("click", ".food-button", function() {
+  }; // end of userSubmit function
 
+  //Below is our onClick function when we click "Submit"
+  $("#submit-btn").on("click", function() {
+
+    // Below prevents default functionality on clicking submit button
+    event.preventDefault();
+
+    // Get the nutrient value, which is a required input
+    nutrient = $('#nutrientSelected').find(":selected").val();
+
+    // if the nutrient is still the default value, display a message
+    if (nutrient == "Nutrients") {
+      
+      $(".blank-state").empty();
+      $(".blank-state").html("<p>Please select a nutrient and click the Submit button</p>");
+    }
+
+    else {
+      // call the userSubmit function
+      userSubmit();
+    };
+
+  }); // end of submit button onClick function
+
+  // Below is the function to get recipes when a food button is clicked
+  function showRecipes(searchTerm) { 
+
+    // clear the recipe div and add a title
     $('#recipe-div').empty();
     $('#recipe-div').html("<h5>Recipes</h5>")
 
-    var selectedFood = $(this).attr("data-food");
-
-    console.log("selectedFood " + selectedFood);
 
     //Below is the ajax query to the database to retrieve recipes
-    var ingredientURL = "https://api.edamam.com/search?" + "&q=" + selectedFood;
+    var ingredientURL = "https://api.edamam.com/search?" + "&q=" + searchTerm;
 
     $.ajax({
         url: ingredientURL,
@@ -256,9 +294,17 @@ $( document ).ready(function() {
       recipeResponse = response.hits;
 
       console.log(recipeResponse);
+      console.log(recipeResponse.length);
 
+      // if there are no recipes, display a message
+      if (recipeResponse.length == 0) {
+        $('#recipe-div').append("<p>Sorry, there are no recipes available with that ingredient.</p><p>Please try another ingredient.</p>")
+      };
+
+      // create a recipe card for each recipe in the response
       for (var i = 0; i < recipeResponse.length; i++) {
 
+        // get recipe information from the response object
         var recipeURL = recipeResponse[i].recipe.url;
         var recipeImage = recipeResponse[i].recipe.image;
         var recipeLabel = recipeResponse[i].recipe.label;
@@ -266,13 +312,86 @@ $( document ).ready(function() {
         // Below is how we create our Recipe Card in HTML
         var recipeCard = $('<div>');
           recipeCard.addClass("recipes");
-          recipeCard.html('<div class="card"><div class="card-image"><img src="' + recipeImage + '"><span class="card-title">' + recipeLabel + '</span></div><div class="card-action"><a id="recipe-url" href="' + recipeURL + '">View Recipe</a></div></div>');
+          recipeCard.html('<div class="card"><div class="card-image"><img src="' + recipeImage + '"><span class="card-title">' + recipeLabel + '</span></div><div class="card-action"><a id="recipe-url" href="' + recipeURL + '" target="_blank">View Recipe</a></div></div>');
           $('#recipe-div').append(recipeCard);
       }
 
     }); // end of recipe ajax function
 
-  }); // end of food button click
+  }; // end of showRecipes function
 
+  //Below is our onClick function when we click a food button
+  $(document.body).on("click", ".food-button", function() {
+    
+    var selectedFood = $(this).attr("data-food");
+
+    console.log("selectedFood " + selectedFood);
+
+    var userInputs = {
+        name: name,
+        age: age,
+        gender: gender,
+        activityLevel: activityLevel,
+        nutrient: nutrient,
+        selectedFood: selectedFood
+    };
+
+    // update firebase
+    database.ref().set(userInputs);
+
+    // call the showRecipes function
+    showRecipes(selectedFood);
+
+  }); // end of food button onClick function
+
+
+
+
+  // Below occurs when page is first loaded =========================================
+
+  // retrieve data from Firebase
+  return firebase.database().ref().once('value').then(function(snapshot) {
+        
+
+          databaseName = snapshot.val().name;
+          databaseAge = snapshot.val().age;
+          databaseGender = snapshot.val().gender;
+          databaseActivityLevel = snapshot.val().activityLevel;
+          databaseNutrient = snapshot.val().nutrient;
+          databaseFood = snapshot.val().selectedFood;
+
+          // if firebase data is not the default data, update variables and input form
+          if (databaseName !== "Name") {
+              name = databaseName;
+              $("#name").val(databaseName);
+          };
+
+          if (databaseAge !== "Age") {
+              age = databaseAge;
+              $("#age").val(databaseAge);
+          };
+
+          if (databaseGender !== "Gender") {
+              gender = databaseGender;
+              $("#chooseGender").val(databaseGender);
+          };
+
+          if (databaseAge !== "Activity") {
+              activityLevel = databaseActivityLevel
+              $("#chooseActivityLevel").val(databaseActivityLevel);
+          };
+
+          if (databaseNutrient !== "Nutrients") {
+              nutrient = databaseNutrient;
+              $("#nutrientSelected").val(databaseNutrient);
+              userSubmit();
+          };
+
+          if (databaseFood !== "selectedFood") {
+              selectedFood = databaseFood;
+              showRecipes(databaseFood);
+          };
+
+  }); // end of firebase data retrieval
 
 }); // end of document.ready
