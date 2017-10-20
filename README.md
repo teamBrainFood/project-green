@@ -25,4 +25,5 @@ When a user chooses a recipe from the page the browser then opens a new window t
 Future Opportunities 
 
 In the next iteration we would have a function to store favorite recipes, and previous searches. There is a great opportunity to place another API call to a grocery retailer to begin a shopping list.
+Oppertunity to add a search for vegetables you do not recognize.
 
