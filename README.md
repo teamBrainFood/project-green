@@ -1,5 +1,4 @@
 # project-green
-Project 1
 
 Concept:
 
